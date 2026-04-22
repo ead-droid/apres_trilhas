@@ -111,7 +111,14 @@ html, body {
 .topbar-logo::before {
   display: none;
 }
-.topbar-logo i { display: none; }
+.topbar-logo i {
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, #4ade80, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 6px rgba(74,222,128,.45));
+}
 .topbar-slide-num {
   display: flex;
   align-items: center;
