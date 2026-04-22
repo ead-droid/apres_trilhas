@@ -1,5 +1,5 @@
 /*
-   JOVEMPRODUTIVO MT - Navigation
+   JOVEM PRODUTIVO MT - Navigation
 */
 
 const slides = Array.from(document.querySelectorAll('.slide'));
