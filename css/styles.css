@@ -109,14 +109,7 @@ html, body {
   opacity: .96;
 }
 .topbar-logo::before {
-  content: "";
-  display: block;
-  width: clamp(132px, 13vw, 172px);
-  height: clamp(34px, 3vw, 42px);
-  background: #fff url("../images/layout_set_logo.png") center / 92% auto no-repeat;
-  border-radius: 12px;
-  box-shadow: 0 8px 18px rgba(6,12,24,.22);
-  flex-shrink: 0;
+  display: none;
 }
 .topbar-logo i { display: none; }
 .topbar-slide-num {
@@ -129,7 +122,12 @@ html, body {
   letter-spacing: .12em;
 }
 .topbar-slide-num::before {
-  content: none;
+  content: "";
+  display: block;
+  width: clamp(120px, 12vw, 158px);
+  height: clamp(30px, 2.8vw, 38px);
+  background: url("../images/layout_set_logo.png") center / contain no-repeat;
+  flex-shrink: 0;
 }
 
 /* ── BOTTOM NAV ──────────────────────────────────── */
@@ -437,23 +435,41 @@ html, body {
 }
 .capa-pillars {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: .8rem;
-  max-width: 720px;
-  margin-top: .3rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 1320px);
+  margin-top: .55rem;
 }
 .capa-pillar {
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 14px;
-  padding: .85rem 1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.06));
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  padding: 1.05rem 1.15rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+  min-height: 112px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 28px rgba(7, 15, 31, .14);
+}
+.capa-pillar i {
+  color: var(--accent);
+  font-size: 1.18rem;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
-  gap: .75rem;
-  backdrop-filter: blur(10px);
+  justify-content: center;
+  background: rgba(245,158,11,.12);
+  border-radius: 12px;
 }
-.capa-pillar i { color: var(--accent); font-size: 1.1rem; flex-shrink: 0; }
-.capa-pillar span { font-size: .95rem; color: rgba(255,255,255,.9); font-weight: 500; line-height: 1.4; }
+.capa-pillar span {
+  font-size: 1.02rem;
+  color: rgba(255,255,255,.94);
+  font-weight: 600;
+  line-height: 1.34;
+}
 
 .capa-deco {
   position: absolute;
