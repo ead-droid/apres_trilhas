@@ -704,3 +704,160 @@ html, body {
 }
 .agenda-item i { font-size: 1.65rem; color: var(--blue-light); }
 .agenda-item span { font-size: .92rem; font-weight: 600; color: var(--navy); line-height: 1.35; }
+
+/* ── SLIDE 9 — SEM SCROLL + STAT DESTACADO ─────────── */
+#s9 .slide-inner        { overflow-y: hidden; }
+#s9 .slide-head         { padding: .4rem 0 .15rem; }
+#s9 .slide-subtitle     { margin-bottom: .45rem; }
+#s9 .grid-3             { margin-bottom: .55rem; gap: .75rem; }
+#s9 .card               { padding: .65rem .9rem; }
+#s9 .mb-md              { margin-bottom: .5rem; }
+#s9 .divider            { margin: .28rem 0; }
+#s9 .bullet-list        { gap: .28rem; }
+#s9 .footer-box         { margin-top: .3rem; margin-bottom: .15rem; padding: .65rem 1rem; }
+#s9 .footer-box p       { font-size: clamp(.84rem, 1.1vw, .95rem); }
+
+/* Todos os stat boxes — centralizar */
+#s9 .grid-3 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Stat box 1 — Jovens no piloto */
+#s9 .grid-3 .card:nth-child(1) {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a4a8a 100%);
+  border: none;
+  box-shadow: 0 8px 28px rgba(13,31,60,.3);
+}
+#s9 .grid-3 .card:nth-child(1) .stat-num   { color: #fff; font-size: clamp(2rem, 3.5vw, 3rem); }
+#s9 .grid-3 .card:nth-child(1) .stat-label { color: rgba(255,255,255,.8); font-size: 1rem; }
+#s9 .grid-3 .card:nth-child(1) .stat-label i { color: #7dd3fc; }
+
+/* Stat box 2 — Custo estimado/ano */
+#s9 .grid-3 .card:nth-child(2) {
+  background: linear-gradient(135deg, #1e5fad 0%, #2979d8 100%);
+  border: none;
+  box-shadow: 0 8px 28px rgba(30,95,173,.35);
+}
+#s9 .grid-3 .card:nth-child(2) .stat-num   { color: #fff; font-size: clamp(2rem, 3.5vw, 3rem); }
+#s9 .grid-3 .card:nth-child(2) .stat-label { color: rgba(255,255,255,.8); font-size: 1rem; }
+#s9 .grid-3 .card:nth-child(2) .stat-label i { color: #fde68a; }
+
+/* Stat box 3 — Custo unitário/ano */
+#s9 .grid-3 .card:nth-child(3) {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  border: none;
+  box-shadow: 0 8px 28px rgba(245,158,11,.35);
+}
+#s9 .grid-3 .card:nth-child(3) .stat-num   { color: #1a1a1a; font-size: clamp(2rem, 3.5vw, 3rem); }
+#s9 .grid-3 .card:nth-child(3) .stat-label { color: rgba(30,30,30,.72); font-size: 1rem; }
+#s9 .grid-3 .card:nth-child(3) .stat-label i { color: #92400e; }
+
+/* Slide 5 compacto - sem rolagem */
+#s5 .slide-inner {
+  overflow-y: hidden;
+  padding-bottom: .15rem;
+}
+
+#s5 .slide-head {
+  padding: .85rem 0 .2rem;
+}
+
+#s5 .slide-title {
+  font-size: clamp(1.65rem, 2.35vw, 2.2rem);
+}
+
+#s5 .slide-subtitle {
+  font-size: clamp(.92rem, 1.2vw, 1.02rem);
+  margin-bottom: .65rem;
+}
+
+#s5 .trilhas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+  align-items: stretch;
+  margin-bottom: .45rem;
+}
+
+#s5 .trilha-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#s5 .trilha-header {
+  padding: .72rem .82rem;
+  gap: .62rem;
+}
+
+#s5 .trilha-header .icon-circle {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: .82rem !important;
+}
+
+#s5 .trilha-tag {
+  font-size: .62rem;
+  margin-bottom: .08rem;
+}
+
+#s5 .trilha-title {
+  font-size: clamp(.92rem, 1.05vw, 1.08rem);
+  line-height: 1.15;
+}
+
+#s5 .trilha-header .badge,
+#s5 .trilha-header .badge-blue {
+  padding: .28rem .55rem;
+  font-size: .56rem !important;
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+
+#s5 .trilha-body {
+  padding: .72rem .82rem;
+}
+
+#s5 .trilha-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .34rem;
+}
+
+#s5 .trilha-points .text-sm {
+  font-size: .84rem;
+  line-height: 1.28;
+}
+
+#s5 .trilha-points .text-sm i {
+  margin-top: .1rem;
+}
+
+#s5 .trilha-state-box {
+  margin-top: .55rem;
+  padding: .58rem .72rem;
+  border-left-width: 2px;
+}
+
+#s5 .trilha-state-label {
+  font-size: .62rem;
+}
+
+#s5 .trilha-state-text {
+  font-size: .82rem;
+  line-height: 1.34;
+}
+
+#s5 .s5-footer {
+  margin-bottom: .15rem;
+  padding: .72rem .95rem;
+}
+
+#s5 .s5-footer p {
+  font-size: clamp(.84rem, 1.02vw, .94rem);
+  line-height: 1.42;
+}
