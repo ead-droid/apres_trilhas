@@ -578,25 +578,38 @@ html, body {
 }
 .compare-col {
   border-radius: 16px;
-  padding: 1rem 1.1rem;
+  padding: 1.3rem 1.5rem;
 }
 .compare-col.old {
   background: #f1f5f9;
-  border: 1px solid #cbd5e1;
+  border: 2px solid #cbd5e1;
 }
 .compare-col.new-model {
-  background: linear-gradient(135deg, #1e5fad14, #2979d80a);
+  background: linear-gradient(135deg, #1e5fad18, #2979d80e);
   border: 2px solid var(--blue-light);
+  box-shadow: 0 4px 20px rgba(30,95,173,.13);
 }
 .compare-label {
-  font-size: .74rem;
-  font-weight: 700;
-  letter-spacing: .12em;
+  font-size: .88rem;
+  font-weight: 800;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  margin-bottom: .55rem;
+  margin-bottom: .8rem;
+  padding: .42rem .8rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
 }
-.compare-label.old { color: #94a3b8; }
-.compare-label.new-model { color: var(--blue); }
+.compare-label.old {
+  color: #475569;
+  background: #e2e8f0;
+}
+.compare-label.new-model {
+  color: #fff;
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  box-shadow: 0 3px 10px rgba(30,95,173,.3);
+}
 
 /* ── IMPACT BOX ──────────────────────────────────── */
 .impact-box {
