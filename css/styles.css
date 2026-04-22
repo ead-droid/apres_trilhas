@@ -123,10 +123,7 @@ html, body {
   display: block;
   height: clamp(30px, 3vw, 40px);
   aspect-ratio: 533 / 144;
-  background: rgba(255,255,255,.98) url("../images/layout_set_logo.png") center / 82% auto no-repeat;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.26);
-  box-shadow: 0 8px 20px rgba(6,12,24,.22);
+  background: url("../images/layout_set_logo.png") center / contain no-repeat;
   flex-shrink: 0;
 }
 
@@ -447,11 +444,11 @@ html, body {
 
 .capa-deco {
   position: absolute;
-  right: 4vw;
-  top: 50%;
+  right: 7vw;
+  top: 39%;
   transform: translateY(-50%);
-  width: clamp(160px, 22vw, 280px);
-  opacity: .06;
+  width: clamp(340px, 40vw, 620px);
+  opacity: .08;
   pointer-events: none;
 }
 
