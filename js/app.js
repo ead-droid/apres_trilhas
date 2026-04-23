@@ -40,6 +40,7 @@ function updateDots(activeSlide) {
       dot.setAttribute('aria-current', isActive ? 'true' : 'false');
     });
   });
+  updateMenuActive(activeSlide);
 }
 
 function updateNavButtons(activeSlide) {
@@ -267,3 +268,49 @@ current = initialSlide;
 initSubslides();
 buildDots();
 renderWithoutAnimation(initialSlide, { updateHistory: true, replaceHistory: true });
+initMenu();
+
+// ── MENU ──────────────────────────────────────────
+function updateMenuActive(slideNumber) {
+  document.querySelectorAll('.slide-menu-item').forEach((btn, i) => {
+    btn.classList.toggle('smenu-active', i + 1 === slideNumber);
+  });
+}
+
+function openMenu() {
+  document.getElementById('menuToggle').classList.add('is-open');
+  document.getElementById('menuToggle').setAttribute('aria-expanded', 'true');
+  document.getElementById('slideMenu').classList.add('is-open');
+  document.getElementById('slideMenu').setAttribute('aria-hidden', 'false');
+  document.getElementById('menuBackdrop').classList.add('is-open');
+}
+
+function closeMenu() {
+  document.getElementById('menuToggle').classList.remove('is-open');
+  document.getElementById('menuToggle').setAttribute('aria-expanded', 'false');
+  document.getElementById('slideMenu').classList.remove('is-open');
+  document.getElementById('slideMenu').setAttribute('aria-hidden', 'true');
+  document.getElementById('menuBackdrop').classList.remove('is-open');
+}
+
+function initMenu() {
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    const isOpen = document.getElementById('slideMenu').classList.contains('is-open');
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  document.getElementById('menuBackdrop').addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.slide-menu-item').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      goTo(Number.parseInt(btn.dataset.goto, 10));
+      closeMenu();
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  updateMenuActive(current);
+}
