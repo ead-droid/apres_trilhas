@@ -175,6 +175,48 @@ function goTo(targetSlide, options = {}) {
   }, TRANSITION_MS);
 }
 
+function getOpenSubslide() {
+  return document.querySelector('.subslide-overlay.is-open');
+}
+
+function openSubslide(name) {
+  const overlay = document.querySelector(`[data-subslide="${name}"]`);
+  if (!overlay) return;
+
+  overlay.classList.add('is-open');
+  overlay.setAttribute('aria-hidden', 'false');
+  const closeButton = overlay.querySelector('.subslide-close');
+  if (closeButton) closeButton.focus();
+}
+
+function closeSubslide() {
+  const overlay = getOpenSubslide();
+  if (!overlay) return;
+
+  overlay.classList.remove('is-open');
+  overlay.setAttribute('aria-hidden', 'true');
+}
+
+function initSubslides() {
+  document.querySelectorAll('[data-subslide-open]').forEach((trigger) => {
+    const target = trigger.getAttribute('data-subslide-open');
+    trigger.addEventListener('click', () => openSubslide(target));
+    trigger.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openSubslide(target);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-subslide-close]').forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      event.preventDefault();
+      closeSubslide();
+    });
+  });
+}
+
 function nextSlide() {
   goTo(current + 1);
 }
@@ -184,6 +226,11 @@ function prevSlide() {
 }
 
 document.addEventListener('keydown', (event) => {
+  if (getOpenSubslide()) {
+    if (event.key === 'Escape') closeSubslide();
+    return;
+  }
+
   if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextSlide();
   if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') prevSlide();
 });
@@ -193,6 +240,8 @@ document.addEventListener('touchstart', (event) => {
   touchX = event.changedTouches[0].clientX;
 });
 document.addEventListener('touchend', (event) => {
+  if (getOpenSubslide()) return;
+
   const deltaX = event.changedTouches[0].clientX - touchX;
   if (Math.abs(deltaX) > 50) {
     if (deltaX < 0) nextSlide();
@@ -210,8 +259,11 @@ window.addEventListener('popstate', (event) => {
 window.nextSlide = nextSlide;
 window.prevSlide = prevSlide;
 window.goTo = goTo;
+window.openSubslide = openSubslide;
+window.closeSubslide = closeSubslide;
 
 const initialSlide = parseSlideFromHash(window.location.hash) || 1;
 current = initialSlide;
+initSubslides();
 buildDots();
 renderWithoutAnimation(initialSlide, { updateHistory: true, replaceHistory: true });
