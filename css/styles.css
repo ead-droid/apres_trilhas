@@ -2757,21 +2757,21 @@ html, body {
 .slide-menu {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   z-index: 1095;
   width: min(290px, 85vw);
   background: linear-gradient(180deg, #0d1f3c 0%, #152e58 100%);
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform .35s cubic-bezier(.4,0,.2,1);
   overflow: hidden;
 }
 
 .slide-menu.is-open {
   transform: translateX(0);
-  box-shadow: -10px 0 48px rgba(13,31,60,.55);
+  box-shadow: 10px 0 48px rgba(13,31,60,.55);
 }
 
 .slide-menu-header {
