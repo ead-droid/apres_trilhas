@@ -2851,3 +2851,88 @@ html, body {
   line-height: 1.35;
   transition: color .16s;
 }
+
+/* ── MENU — BOTÃO PDF ────────────────────────────── */
+.slide-menu-footer {
+  padding: .75rem 1.2rem 1rem;
+  border-top: 1px solid rgba(255,255,255,.09);
+  flex-shrink: 0;
+}
+
+.slide-menu-pdf-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .65rem 1rem;
+  background: linear-gradient(135deg, #b91c1c, #ef4444);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+  letter-spacing: .02em;
+}
+
+.slide-menu-pdf-btn:hover  { opacity: .88; transform: scale(1.02); }
+.slide-menu-pdf-btn:disabled { opacity: .45; cursor: wait; transform: none; }
+.slide-menu-pdf-btn i { font-size: .88rem; }
+
+/* ── PDF PROGRESS OVERLAY ────────────────────────── */
+.pdf-progress-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(13,31,60,.88);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  color: #fff;
+}
+
+.pdf-progress-spinner {
+  width: 52px;
+  height: 52px;
+  border: 4px solid rgba(255,255,255,.15);
+  border-top-color: #f59e0b;
+  border-radius: 50%;
+  animation: pdf-spin .75s linear infinite;
+}
+
+@keyframes pdf-spin { to { transform: rotate(360deg); } }
+
+.pdf-progress-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.pdf-progress-sub {
+  font-size: .8rem;
+  color: rgba(255,255,255,.55);
+  margin-top: -.4rem;
+}
+
+.pdf-progress-bar-wrap {
+  width: min(260px, 70vw);
+  height: 5px;
+  background: rgba(255,255,255,.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pdf-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 3px;
+  transition: width .3s ease;
+  width: 0%;
+}

@@ -308,9 +308,114 @@ function initMenu() {
     });
   });
 
+  document.getElementById('pdfBtn').addEventListener('click', generatePDF);
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
 
   updateMenuActive(current);
+}
+
+// ── PDF EXPORT ─────────────────────────────────────
+async function generatePDF() {
+  if (typeof html2canvas === 'undefined' || typeof window.jspdf === 'undefined') {
+    alert('Bibliotecas não carregadas. Verifique sua conexão e tente novamente.');
+    return;
+  }
+
+  closeMenu();
+
+  const btn = document.getElementById('pdfBtn');
+  btn.disabled = true;
+
+  // Overlay de progresso
+  const overlay = document.createElement('div');
+  overlay.className = 'pdf-progress-overlay';
+  overlay.innerHTML = `
+    <div class="pdf-progress-spinner"></div>
+    <div class="pdf-progress-title" id="pdfTitle">Preparando exportação…</div>
+    <div class="pdf-progress-sub" id="pdfSub">Aguarde, isso pode levar alguns segundos</div>
+    <div class="pdf-progress-bar-wrap"><div class="pdf-progress-bar" id="pdfBar"></div></div>
+  `;
+  document.body.appendChild(overlay);
+
+  // Oculta elementos de UI do menu para não aparecerem na captura
+  const uiEls = document.querySelectorAll('.menu-toggle, .slide-menu-backdrop, .slide-menu');
+  uiEls.forEach(el => { el.dataset.pdfHidden = el.style.visibility; el.style.visibility = 'hidden'; });
+
+  const savedCurrent = current;
+  const allSlides = Array.from(document.querySelectorAll('.slide'));
+  const pres = document.getElementById('pres');
+  const W = pres.offsetWidth;
+  const H = pres.offsetHeight;
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: W >= H ? 'landscape' : 'portrait',
+      unit: 'px',
+      format: [W, H],
+      compress: true,
+    });
+
+    // Desativa transições durante captura
+    allSlides.forEach(s => { s.style.transition = 'none'; });
+
+    for (let i = 1; i <= TOTAL; i++) {
+      document.getElementById('pdfTitle').textContent = `Capturando slide ${i} de ${TOTAL}…`;
+      document.getElementById('pdfSub').textContent = `${Math.round((i / TOTAL) * 100)}% concluído`;
+      document.getElementById('pdfBar').style.width = `${Math.round((i / TOTAL) * 100)}%`;
+
+      // Mostra apenas o slide atual
+      allSlides.forEach((s, idx) => {
+        const active = idx + 1 === i;
+        s.style.opacity = active ? '1' : '0';
+        s.style.transform = 'translateX(0)';
+        s.classList.toggle('active', active);
+      });
+
+      // Aguarda o browser pintar
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+      await new Promise(r => setTimeout(r, 120));
+
+      const canvas = await html2canvas(pres, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        width: W,
+        height: H,
+        windowWidth: W,
+        windowHeight: H,
+        scrollX: 0,
+        scrollY: 0,
+      });
+
+      const imgData = canvas.toDataURL('image/jpeg', 0.93);
+      if (i > 1) pdf.addPage([W, H], W >= H ? 'landscape' : 'portrait');
+      pdf.addImage(imgData, 'JPEG', 0, 0, W, H);
+    }
+
+    document.getElementById('pdfTitle').textContent = 'Gerando arquivo…';
+    document.getElementById('pdfBar').style.width = '100%';
+    await new Promise(r => setTimeout(r, 200));
+
+    pdf.save('jovem-produtivo-mt.pdf');
+
+  } catch (err) {
+    console.error('Erro ao gerar PDF:', err);
+    alert('Erro ao gerar o PDF. Verifique o console e tente novamente.');
+  } finally {
+    // Restaura tudo
+    allSlides.forEach(s => {
+      s.style.transition = '';
+      s.style.opacity = '';
+      s.style.transform = '';
+    });
+    uiEls.forEach(el => { el.style.visibility = el.dataset.pdfHidden || ''; delete el.dataset.pdfHidden; });
+    renderWithoutAnimation(savedCurrent);
+    overlay.remove();
+    btn.disabled = false;
+  }
 }
