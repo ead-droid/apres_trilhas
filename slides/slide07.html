@@ -1,0 +1,655 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide 07 - Responsabilidades das Empresas e das ETECs</title>
+<style>
+  :root {
+    --bg: #dfe9f5;
+    --paper: #ffffff;
+    --navy: #0d1f3c;
+    --blue: #1e5fad;
+    --blue-2: #2f80d6;
+    --blue-soft: #eaf3ff;
+    --gold: #f4a51c;
+    --gold-soft: #fff7e8;
+    --rose: #c02963;
+    --rose-soft: #fff0f6;
+    --text: #132642;
+    --muted: #53657d;
+    --line: #d7e3f2;
+    --shadow: 0 18px 42px rgba(13, 31, 60, .10);
+    --radius: 24px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Inter, Arial, sans-serif;
+  }
+
+  .wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .topbar {
+    height: 66px;
+    flex: 0 0 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 76px;
+    background: linear-gradient(135deg, #0d1f3c 0%, #15315b 58%, #1e5fad 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: 0 8px 24px rgba(13, 31, 60, .24);
+    color: #fff;
+  }
+
+  .topbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 48px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .03em;
+  }
+
+  .topbar-logo-mark {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    color: #4ade80;
+  }
+
+  .topbar-logo-mark::before,
+  .topbar-logo-mark::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 8px;
+    border-radius: 13px 13px 0 13px;
+    background: currentColor;
+  }
+
+  .topbar-logo-mark::before {
+    left: 0;
+    top: 7px;
+    transform: rotate(35deg);
+  }
+
+  .topbar-logo-mark::after {
+    right: 0;
+    top: 2px;
+    color: #22d3ee;
+    transform: rotate(-35deg);
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: rgba(255, 255, 255, .86);
+    font-size: 13px;
+    font-weight: 850;
+    letter-spacing: .12em;
+  }
+
+  .topbar-emblem {
+    display: grid;
+    place-items: center;
+    min-width: 132px;
+    height: 34px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+
+  .slide {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    padding: 26px 70px 18px;
+    background:
+      radial-gradient(circle at 10% 8%, rgba(245, 158, 11, .10) 0 175px, transparent 176px),
+      radial-gradient(circle at 88% 17%, rgba(47, 128, 214, .13) 0 250px, transparent 251px),
+      radial-gradient(circle at 76% 87%, rgba(11, 143, 90, .07) 0 195px, transparent 196px),
+      linear-gradient(180deg, #f8fbff 0%, #edf4fb 100%);
+  }
+
+  .slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(30, 95, 173, .17) 1.3px, transparent 1.3px);
+    background-size: 27px 27px;
+    mask-image: linear-gradient(110deg, transparent 0 65%, #000 80%, transparent 100%);
+    opacity: .34;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 104px minmax(0, 1fr);
+    gap: 14px;
+    min-height: 0;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 500px;
+    gap: 34px;
+    align-items: start;
+    min-height: 0;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 7px 17px;
+    border: 1px solid rgba(192, 41, 99, .22);
+    border-radius: 999px;
+    background: rgba(255, 240, 246, .92);
+    color: var(--rose);
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 850;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, var(--rose), #f43f5e);
+    clip-path: polygon(0 50%, 22% 35%, 22% 20%, 42% 35%, 58% 20%, 58% 35%, 78% 20%, 78% 35%, 100% 50%, 78% 65%, 78% 80%, 58% 65%, 42% 80%, 42% 65%, 22% 80%, 22% 65%);
+  }
+
+  h1 {
+    margin: 10px 0 6px;
+    color: var(--navy);
+    font-size: 46px;
+    line-height: 1.04;
+    letter-spacing: -.025em;
+    font-weight: 900;
+  }
+
+  .title-accent {
+    width: 82px;
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #e11d48 0 40%, #8b5cf6 40% 72%, var(--gold) 72% 100%);
+    margin: 9px 0 11px;
+  }
+
+  .subtitle {
+    max-width: 980px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1.38;
+    font-weight: 520;
+  }
+
+  .insight-stack {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    padding-top: 1px;
+  }
+
+  .insight {
+    min-height: 64px;
+    padding: 13px 18px;
+    border: 1px solid var(--line);
+    border-radius: 19px;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 10px 24px rgba(13, 31, 60, .07);
+  }
+
+  .insight.key {
+    background: linear-gradient(135deg, #fff9ed, #fffdfa);
+    border-color: rgba(244, 165, 28, .38);
+  }
+
+  .label,
+  .flow-kicker,
+  .card-kicker {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .insight .label { color: var(--blue); margin-bottom: 6px; }
+  .insight.key .label { color: #b66808; }
+
+  .insight strong {
+    display: block;
+    color: var(--navy);
+    font-size: 19px;
+    line-height: 1.12;
+    font-weight: 900;
+  }
+
+  .flow-band {
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    align-items: stretch;
+    gap: 14px;
+    min-height: 0;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.94);
+    box-shadow: var(--shadow);
+  }
+
+  .flow-chip {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    box-shadow: 0 8px 22px rgba(13,31,60,.06);
+  }
+
+  .flow-chip.company { background: linear-gradient(135deg, #fff8ec, #fffdf8); border-color: rgba(245,158,11,.34); }
+  .flow-chip.bridge { background: linear-gradient(135deg, var(--navy), var(--blue)); color:#fff; }
+  .flow-chip.school { background: linear-gradient(135deg, #f3f8ff, #ffffff); border-color: rgba(30,95,173,.24); }
+
+  .mini-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    color:#fff;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(13,31,60,.12);
+  }
+  .mini-icon.company { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+  .mini-icon.bridge { background: linear-gradient(135deg, #0c2b59, #2868bd); }
+  .mini-icon.school { background: linear-gradient(135deg, var(--blue), var(--blue-2)); }
+
+  .factory, .school-icon, .handshake { width: 29px; height: 29px; position: relative; }
+  .factory::before { content:""; position:absolute; left:3px; right:3px; bottom:3px; top:12px; border:3px solid #fff; border-radius:3px; }
+  .factory::after { content:""; position:absolute; left:7px; top:3px; width:18px; height:12px; background: linear-gradient(135deg, transparent 0 45%, #fff 46% 60%, transparent 61%), linear-gradient(45deg, transparent 0 45%, #fff 46% 60%, transparent 61%); }
+  .school-icon::before { content:""; position:absolute; left:4px; right:4px; bottom:4px; top:13px; border:3px solid #fff; border-top:0; border-radius:3px; }
+  .school-icon::after { content:""; position:absolute; left:1px; right:1px; top:4px; height:10px; background:#fff; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .handshake::before, .handshake::after { content:""; position:absolute; width:16px; height:10px; border:3px solid #fff; border-radius:8px; top:10px; }
+  .handshake::before { left:1px; transform: rotate(22deg); border-right:0; }
+  .handshake::after { right:1px; transform: rotate(-22deg); border-left:0; }
+
+  .flow-copy { min-width: 0; }
+  .flow-kicker { margin-bottom: 5px; }
+  .flow-chip.company .flow-kicker { color: #b66808; }
+  .flow-chip.bridge .flow-kicker { color: rgba(255,255,255,.75); }
+  .flow-chip.school .flow-kicker { color: var(--blue); }
+  .flow-title { margin: 0; font-size: 17px; line-height: 1.2; font-weight: 900; color: var(--navy); }
+  .flow-chip.bridge .flow-title { color: #fff; }
+
+  .grid-main {
+    display: grid;
+    grid-template-columns: .87fr 1.13fr;
+    gap: 20px;
+    min-height: 0;
+  }
+
+  .card {
+    min-height: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .94);
+    box-shadow: 0 14px 34px rgba(13, 31, 60, .08);
+    padding: 20px 24px 18px;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    align-content: stretch;
+    overflow: hidden;
+  }
+
+  .company-card { border-top: 5px solid var(--gold); }
+  .etec-card { border-top: 5px solid var(--blue); }
+
+  .card-header {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    flex: 0 0 auto;
+  }
+
+  .icon-round {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    box-shadow: 0 12px 24px rgba(13,31,60,.15);
+  }
+  .icon-round.company { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+  .icon-round.etec { background: linear-gradient(135deg, var(--navy), var(--blue)); }
+
+  .card-kicker {
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  .card-title {
+    margin: 0;
+    color: var(--navy);
+    font-size: 28px;
+    line-height: 1.08;
+    font-weight: 900;
+  }
+
+  .items {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-height: 0;
+    align-content: start;
+  }
+
+  .items li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 13px;
+    align-items: start;
+    padding: 10px 14px;
+    border-radius: 16px;
+    background: #f8fbff;
+    border: 1px solid rgba(215,227,242,.78);
+    color: #263a54;
+    font-size: 18px;
+    line-height: 1.24;
+    font-weight: 650;
+    min-height: 42px;
+  }
+
+  .etec-card .items {
+    gap: 7px;
+  }
+
+  .etec-card .items li {
+    font-size: 15.6px;
+    line-height: 1.24;
+    padding: 7px 12px;
+    min-height: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .tick {
+    width: 22px;
+    height: 22px;
+    margin-top: 0;
+    border-radius: 50%;
+    background: var(--blue);
+    position: relative;
+    box-shadow: 0 0 0 5px rgba(30,95,173,.09);
+  }
+
+  .company-card .tick {
+    background: var(--gold);
+    box-shadow: 0 0 0 5px rgba(245,158,11,.12);
+  }
+
+  .tick::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    width: 6px;
+    height: 11px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(40deg);
+  }
+
+  .mini-summary {
+    margin-top: 14px;
+    padding: 13px 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    line-height: 1.28;
+    color: #2e425d;
+    font-weight: 600;
+  }
+  .company-card .mini-summary { background: linear-gradient(135deg, #fff9ef, #fff); border: 1px solid rgba(245,158,11,.22); }
+  .etec-card .mini-summary { background: linear-gradient(135deg, #eff6ff, #fff); border: 1px solid rgba(30,95,173,.18); }
+
+  .closing {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 22px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(13, 31, 60, .18);
+    overflow: hidden;
+  }
+
+  .closing-mark {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(244, 165, 28, .65);
+    border-radius: 50%;
+    background: rgba(244, 165, 28, .16);
+    color: var(--gold);
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+  .closing p {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.24;
+    font-weight: 800;
+  }
+
+  .closing strong.orange { color: #ffcd70; }
+  .closing strong.blue { color: #99c7ff; }
+
+  @media (max-height: 820px) {
+    .slide { padding-top: 20px; padding-bottom: 14px; }
+    .content { grid-template-rows: auto 92px minmax(0, 1fr); gap: 11px; }
+    h1 { font-size: 42px; }
+    .subtitle { font-size: 18px; }
+    .insight {
+      min-height: 68px;
+      padding: 11px 15px;
+    }
+    .insight strong {
+      font-size: 18px;
+      line-height: 1.12;
+    }
+    .flow-band {
+      padding: 9px;
+      gap: 10px;
+    }
+    .flow-chip {
+      grid-template-columns: 48px 1fr;
+      gap: 11px;
+      padding: 9px 12px;
+    }
+    .mini-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+    }
+    .flow-title {
+      font-size: 15px;
+      line-height: 1.18;
+    }
+    .card {
+      padding: 16px 20px 14px;
+    }
+    .card-title {
+      font-size: 25px;
+    }
+    .items { gap: 8px; }
+    .items li { font-size: 16px; padding-top: 7px; padding-bottom: 7px; min-height: auto; }
+    .etec-card .items { gap: 6px; }
+    .etec-card .items li {
+      font-size: 14.6px;
+      line-height: 1.22;
+      padding: 6px 11px;
+      min-height: auto;
+      height: auto;
+      overflow: visible;
+    }
+    .mini-summary { font-size: 14px; padding: 9px 12px; margin-top: 10px; }
+    .closing p { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="topbar-logo">
+      
+     
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-emblem">MATO GROSSO</span>
+      <span>07 / 18</span>
+    </div>
+  </div>
+
+  <main class="slide" aria-label="Responsabilidades das Empresas e das ETECs">
+    <div class="content">
+      <header class="top">
+        <div>
+          <div class="eyebrow">Corresponsabilidade formativa</div>
+          <h1>Responsabilidades das Empresas e das ETECs</h1>
+          <div class="title-accent"></div>
+          <p class="subtitle">Parceria estruturada para garantir qualidade formativa, acompanhamento e certificação em todo o percurso do estudante.</p>
+        </div>
+
+        <aside class="insight-stack" aria-label="Resumo estratégico">
+          <div class="insight">
+            <p class="label">Lógica central</p>
+            <strong>Empresa e escola atuando de forma complementar</strong>
+          </div>
+          <div class="insight key">
+            <p class="label">Resultado esperado</p>
+            <strong>Prática orientada, acompanhamento contínuo e certificação</strong>
+          </div>
+        </aside>
+      </header>
+
+      <section class="flow-band" aria-label="Fluxo da corresponsabilidade">
+        <div class="flow-chip company">
+          <div class="mini-icon company"><span class="factory" aria-hidden="true"></span></div>
+          <div class="flow-copy">
+            <p class="flow-kicker">Empresas parceiras</p>
+            <p class="flow-title">Acolhem, acompanham a prática e participam da seleção e da parceria.</p>
+          </div>
+        </div>
+
+        <div class="flow-chip bridge">
+          <div class="mini-icon bridge"><span class="handshake" aria-hidden="true"></span></div>
+          <div class="flow-copy">
+            <p class="flow-kicker">Corresponsabilidade</p>
+            <p class="flow-title">Divisão clara de papéis, qualidade formativa e articulação contínua.</p>
+          </div>
+        </div>
+
+        <div class="flow-chip school">
+          <div class="mini-icon school"><span class="school-icon" aria-hidden="true"></span></div>
+          <div class="flow-copy">
+            <p class="flow-kicker">ETECs / coordenação pública</p>
+            <p class="flow-title">Organizam a oferta, acompanham o percurso e garantem a certificação.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-main">
+        <article class="card company-card">
+          <div class="card-header">
+            <div class="icon-round company"><span class="factory" aria-hidden="true"></span></div>
+            <div>
+              <p class="card-kicker">Empresas parceiras</p>
+              <h2 class="card-title">Compete às empresas</h2>
+            </div>
+          </div>
+
+          <ul class="items">
+            <li><span class="tick"></span><span>Participar do credenciamento.</span></li>
+            <li><span class="tick"></span><span>Assinar termo de parceria e cumprir suas obrigações.</span></li>
+            <li><span class="tick"></span><span>Indicar um tutor para orientar e acompanhar as atividades práticas na empresa.</span></li>
+            <li><span class="tick"></span><span>Participar da seleção dos estudantes.</span></li>
+          </ul>
+
+          <div class="mini-summary"><strong>Foco da empresa:</strong> garantir ambiente de aprendizagem prática, orientação e vínculo efetivo com o setor produtivo.</div>
+        </article>
+
+        <article class="card etec-card">
+          <div class="card-header">
+            <div class="icon-round etec"><span class="school-icon" aria-hidden="true"></span></div>
+            <div>
+              <p class="card-kicker">ETECs / coordenação pública</p>
+              <h2 class="card-title">Compete às ETECs</h2>
+            </div>
+          </div>
+
+          <ul class="items">
+            <li><span class="tick"></span><span>Ofertar os cursos técnicos e/ou FICs de qualificação profissional.</span></li>
+            <li><span class="tick"></span><span>Elaborar PPCs e demais requisitos pedagógicos necessários à oferta com qualidade.</span></li>
+            <li><span class="tick"></span><span>Organizar cursos modulares por semestre, com parte presencial e híbrida mediada por tecnologias.</span></li>
+            <li><span class="tick"></span><span>Elaborar, com o setor produtivo, o programa de atividades práticas do tempo empresa.</span></li>
+            <li><span class="tick"></span><span>Indicar os professores responsáveis pelas turmas.</span></li>
+            <li><span class="tick"></span><span>Garantir seguro aos estudantes do programa.</span></li>
+            <li><span class="tick"></span><span>Garantir a certificação aos estudantes aptos ao exercício profissional.</span></li>
+          </ul>
+
+          <div class="mini-summary"><strong>Foco da ETEC:</strong> assegurar organização pedagógica, acompanhamento institucional, segurança e certificação ao final da formação.</div>
+        </article>
+      </section>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>

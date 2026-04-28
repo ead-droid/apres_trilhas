@@ -1,0 +1,799 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide - Aquisição de Conteúdo Digital</title>
+<style>
+:root{
+  --bg:#edf4fb;
+  --navy:#0d1f3c;
+  --blue:#1e5fad;
+  --blue2:#2f80d6;
+  --green:#0b8f5a;
+  --gold:#f4a51c;
+  --cyan:#0ea5b7;
+  --paper:rgba(255,255,255,.96);
+  --line:#d5e3f2;
+  --text:#132642;
+  --muted:#52657f;
+  --shadow:0 18px 42px rgba(13,31,60,.11);
+}
+*{box-sizing:border-box}
+html,body{
+  width:100%;
+  height:100%;
+  margin:0;
+  overflow:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Segoe UI",Inter,Arial,sans-serif;
+}
+.wrap{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg);
+  overflow:hidden;
+}
+.topbar{
+  height:66px;
+  flex:0 0 66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:0 76px;
+  background:linear-gradient(135deg,#0d1f3c 0%,#15315b 58%,#1e5fad 100%);
+  color:#fff;
+  box-shadow:0 8px 24px rgba(13,31,60,.24);
+}
+.topbar-logo{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-left:48px;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:.03em;
+}
+.mark{
+  width:18px;
+  height:18px;
+  position:relative;
+  color:#4ade80;
+}
+.mark::before,.mark::after{
+  content:"";
+  position:absolute;
+  width:13px;
+  height:8px;
+  border-radius:13px 13px 0 13px;
+  background:currentColor;
+}
+.mark::before{left:0;top:7px;transform:rotate(35deg)}
+.mark::after{right:0;top:2px;color:#22d3ee;transform:rotate(-35deg)}
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  color:rgba(255,255,255,.84);
+  font-size:13px;
+  font-weight:850;
+  letter-spacing:.12em;
+}
+.emblem{
+  display:grid;
+  place-items:center;
+  min-width:132px;
+  height:34px;
+  padding:0 14px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:8px;
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.slide{
+  position:relative;
+  flex:1;
+  min-height:0;
+  padding:28px 70px 24px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 12%,rgba(30,95,173,.10) 0 230px,transparent 231px),
+    radial-gradient(circle at 92% 16%,rgba(14,165,183,.12) 0 250px,transparent 251px),
+    radial-gradient(circle at 78% 88%,rgba(11,143,90,.10) 0 220px,transparent 221px),
+    linear-gradient(180deg,#f8fbff 0%,#edf4fb 100%);
+}
+.slide::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(30,95,173,.18) 1.3px,transparent 1.3px);
+  background-size:28px 28px;
+  mask-image:linear-gradient(110deg,transparent 0 62%,#000 78%,transparent 100%);
+  opacity:.35;
+}
+.content{
+  position:relative;
+  z-index:1;
+  height:100%;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:18px;
+}
+.header{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 390px;
+  gap:34px;
+  align-items:start;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  width:fit-content;
+  padding:8px 18px;
+  border-radius:999px;
+  border:1px solid rgba(30,95,173,.26);
+  background:rgba(234,243,255,.88);
+  color:var(--blue);
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.eyebrow::before,
+.eyebrow::after{
+  display:none !important;
+  content:none !important;
+}
+h1{
+  margin:14px 0 10px;
+  max-width:1040px;
+  color:var(--navy);
+  font-size:50px;
+  line-height:1.03;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+
+.title-highlight{
+  display:inline;
+  margin:0;
+  padding:0;
+  background:transparent;
+  color:var(--blue);
+  box-shadow:none;
+}
+
+.title-subline{
+  display:inline-block;
+  margin-top:4px;
+  font-size:.70em;
+  line-height:1.10;
+  color:var(--navy);
+}
+.subtitle{
+  margin:0;
+  max-width:1000px;
+  color:var(--muted);
+  font-size:22px;
+  line-height:1.34;
+  font-weight:560;
+}
+.investment-hero{
+  min-height:142px;
+  padding:24px 26px;
+  border-radius:28px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.investment-hero .label{
+  margin:0 0 8px;
+  color:rgba(255,255,255,.72);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.investment-hero strong{
+  display:block;
+  color:#ffe08a;
+  font-size:45px;
+  line-height:1;
+  font-weight:950;
+}
+.investment-hero span{
+  display:block;
+  margin-top:10px;
+  color:rgba(255,255,255,.92);
+  font-size:22px;
+  line-height:1.25;
+  font-weight:700;
+}
+.main-grid{
+  min-height:0;
+  display:grid;
+  grid-template-columns:1.02fr 1.02fr 1.34fr;
+  grid-template-rows:1fr 1fr;
+  gap:18px;
+}
+.card{
+  min-height:0;
+  padding:20px 22px;
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:var(--paper);
+  box-shadow:0 12px 30px rgba(13,31,60,.08);
+  overflow:hidden;
+}
+.card h2{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 14px;
+  color:var(--navy);
+  font-size:27px;
+  line-height:1.08;
+  font-weight:920;
+}
+.ico{
+  width:44px;
+  height:44px;
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  color:#fff;
+  font-size:23px;
+  font-weight:900;
+}
+.territory{grid-column:1;grid-row:1}
+.efficiency{grid-column:2;grid-row:1}
+.courses{grid-column:3;grid-row:1 / span 2}
+.avatec{grid-column:1 / span 2;grid-row:2}
+.territory .ico{background:linear-gradient(135deg,var(--blue),var(--blue2))}
+.efficiency .ico{background:linear-gradient(135deg,#0f766e,var(--green))}
+.courses .ico{background:linear-gradient(135deg,var(--navy),var(--blue))}
+.avatec .ico{background:linear-gradient(135deg,var(--gold),#fbbf24)}
+
+ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:8px;
+}
+li{
+  display:grid;
+  grid-template-columns:18px 1fr;
+  gap:10px;
+  align-items:start;
+  color:#253a55;
+  font-size:19px;
+  line-height:1.18;
+  font-weight:620;
+}
+li::before{
+  content:"";
+  width:9px;
+  height:9px;
+  margin-top:7px;
+  border-radius:50%;
+  background:var(--blue);
+  box-shadow:0 0 0 5px rgba(30,95,173,.10);
+}
+.efficiency li::before{background:var(--green);box-shadow:0 0 0 5px rgba(11,143,90,.12)}
+
+.course-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.axis{
+  padding:18px 19px;
+  border-radius:20px;
+  background:#f8fbff;
+  border:1px solid rgba(213,227,242,.95);
+}
+.axis h3{
+  margin:0 0 10px;
+  color:var(--blue);
+  font-size:23px;
+  line-height:1.1;
+  font-weight:950;
+}
+.axis.agro h3{color:#0b7a4e}
+.axis.health h3{color:#b4235a}
+.course{
+  display:block;
+  padding:10px 0;
+  border-top:1px solid rgba(213,227,242,.78);
+  color:#1e344f;
+  font-size:19px;
+  line-height:1.18;
+  font-weight:680;
+}
+.course:first-of-type{border-top:0;padding-top:0}
+
+.avatec-layout{
+  display:grid;
+  grid-template-columns:190px 1fr 1.25fr;
+  gap:18px;
+  align-items:stretch;
+}
+.avatec-box{
+  min-height:132px;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  text-align:center;
+  box-shadow:0 14px 28px rgba(30,95,173,.18);
+}
+.avatec-box strong{
+  display:block;
+  font-size:30px;
+  line-height:1.05;
+  font-weight:950;
+}
+.pill-list{
+  display:grid;
+  gap:10px;
+  align-content:center;
+}
+.pill{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:38px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#eef6ff;
+  border:1px solid rgba(30,95,173,.20);
+  color:#123d73;
+  font-size:20px;
+  line-height:1.1;
+  font-weight:800;
+}
+.pill::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--blue);
+}
+.gain{
+  padding:17px 18px;
+  border-radius:22px;
+  background:#f4fbf7;
+  border:1px solid rgba(11,143,90,.20);
+  color:#154833;
+  display:grid;
+  align-content:center;
+  gap:8px;
+}
+.gain strong{
+  display:block;
+  color:#0b5f3f;
+  font-size:23px;
+  line-height:1.1;
+  font-weight:950;
+}
+.gain span{
+  display:block;
+  font-size:20px;
+  line-height:1.25;
+  font-weight:620;
+}
+.message{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  align-items:center;
+  gap:18px;
+  padding:16px 24px;
+  border-radius:26px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.message-mark{
+  width:54px;
+  height:54px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(244,165,28,.16);
+  border:1px solid rgba(244,165,28,.58);
+  color:#ffd37a;
+  font-size:30px;
+  font-weight:950;
+}
+.message p{
+  margin:0;
+  font-size:23px;
+  line-height:1.23;
+  font-weight:850;
+}
+.message strong{color:#ffe08a}
+
+.infographic{
+  background:linear-gradient(135deg,#ffffff,#f4fbf7);
+  border-color:rgba(11,143,90,.22);
+}
+
+.infographic h2{
+  margin-bottom:16px;
+}
+
+.info-flow{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  align-items:stretch;
+}
+
+.info-main{
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:18px;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--navy),var(--blue));
+  color:#fff;
+  box-shadow:0 14px 28px rgba(30,95,173,.18);
+}
+
+.info-main strong{
+  display:block;
+  color:#ffe08a;
+  font-size:34px;
+  line-height:1;
+  font-weight:950;
+}
+
+.info-main span{
+  display:block;
+  margin-top:8px;
+  font-size:22px;
+  line-height:1.15;
+  font-weight:760;
+}
+
+.info-arrow{
+  display:grid;
+  place-items:center;
+  color:var(--gold);
+  font-size:40px;
+  font-weight:950;
+}
+
+.info-points{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.info-point{
+  padding:18px 19px;
+  border-radius:20px;
+  background:#ffffff;
+  border:1px solid rgba(11,143,90,.18);
+  box-shadow:0 8px 18px rgba(13,31,60,.05);
+}
+
+.info-point b{
+  display:block;
+  color:#0b5f3f;
+  font-size:24px;
+  line-height:1.1;
+  font-weight:850;
+  margin-bottom:7px;
+}
+
+.info-point small{
+  display:block;
+  color:#253a55;
+  font-size:19px;
+  line-height:1.22;
+  font-weight:500;
+}
+
+
+/* Ajustes finos de alinhamento e peso visual dos cards */
+.card h2{
+  align-items:center;
+  font-weight:780;
+}
+
+li{
+  align-items:flex-start;
+  font-weight:560;
+  line-height:1.18;
+}
+
+li::before{
+  margin-top:7px;
+}
+
+.course{
+  font-weight:520;
+  line-height:1.22;
+}
+
+.axis h3{
+  font-weight:780;
+  line-height:1.15;
+}
+
+.info-point b{
+  font-weight:760;
+}
+
+.info-point small{
+  font-weight:430;
+  line-height:1.24;
+}
+
+.card{
+  display:flex;
+  flex-direction:column;
+}
+
+.territory ul,
+.efficiency ul{
+  gap:8px;
+  margin-top:0;
+}
+
+.course-grid{
+  align-items:stretch;
+}
+
+.axis{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+.infographic .info-point{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+/* Correção do Slide 19: garante que o texto fique dentro dos cards superiores */
+.territory,
+.efficiency{
+  padding:18px 22px 16px;
+}
+.territory h2,
+.efficiency h2{
+  margin-bottom:10px;
+  font-size:27px;
+}
+.territory ul,
+.efficiency ul{
+  gap:7px;
+}
+.territory li,
+.efficiency li{
+  font-size:18.8px;
+  line-height:1.14;
+  font-weight:620;
+}
+.territory li::before,
+.efficiency li::before{
+  margin-top:6px;
+}
+
+
+
+/* Ajuste solicitado: ampliar o texto dos cards superiores para ocupar melhor o espaço interno */
+.territory,
+.efficiency{
+  padding:26px 28px 24px;
+}
+
+.territory h2,
+.efficiency h2{
+  font-size:31px;
+  margin-bottom:18px;
+}
+
+.territory .ico,
+.efficiency .ico{
+  width:48px;
+  height:48px;
+  border-radius:17px;
+  font-size:24px;
+}
+
+.territory ul,
+.efficiency ul{
+  gap:15px;
+  margin-top:4px;
+}
+
+.territory li,
+.efficiency li{
+  font-size:24px;
+  line-height:1.30;
+  font-weight:620;
+  grid-template-columns:20px 1fr;
+  gap:12px;
+}
+
+.territory li::before,
+.efficiency li::before{
+  width:10px;
+  height:10px;
+  margin-top:10px;
+  box-shadow:0 0 0 6px rgba(30,95,173,.10);
+}
+
+.efficiency li::before{
+  box-shadow:0 0 0 6px rgba(11,143,90,.12);
+}
+
+
+/* Correção final: texto maior sem vazar dos cards superiores */
+.territory,
+.efficiency{
+  padding:22px 24px 20px !important;
+  overflow:hidden !important;
+}
+
+.territory h2,
+.efficiency h2{
+  font-size:28px !important;
+  line-height:1.06 !important;
+  margin-bottom:13px !important;
+}
+
+.territory .ico,
+.efficiency .ico{
+  width:46px !important;
+  height:46px !important;
+  border-radius:16px !important;
+  font-size:23px !important;
+}
+
+.territory ul,
+.efficiency ul{
+  gap:9px !important;
+  margin-top:0 !important;
+}
+
+.territory li,
+.efficiency li{
+  font-size:20.8px !important;
+  line-height:1.18 !important;
+  font-weight:620 !important;
+  grid-template-columns:18px minmax(0,1fr) !important;
+  gap:10px !important;
+}
+
+.territory li::before,
+.efficiency li::before{
+  width:9px !important;
+  height:9px !important;
+  margin-top:8px !important;
+  box-shadow:0 0 0 5px rgba(30,95,173,.10) !important;
+}
+
+.efficiency li::before{
+  box-shadow:0 0 0 5px rgba(11,143,90,.12) !important;
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="topbar-logo"></div>
+    <div class="topbar-right"><span class="emblem">SECITEC - MT</span></div>
+  </div>
+
+  <main class="slide" aria-label="Aquisição de Conteúdo Digital para Educação Profissional">
+    <div class="content">
+      <header class="header">
+        <div>
+          <div class="eyebrow">Escalabilidade e inovação</div>
+          <h1><span class="title-highlight">Saber em Rede</span><br><span class="title-subline">Aquisição de Conteúdo Digital para Escalabilidade e Inovação na Educação Profissional em Mato Grosso</span></h1>
+          <p class="subtitle">Desenvolvimento de conteúdos digitais modulares para ampliar a oferta, reduzir custos e garantir padrão de qualidade em toda a rede.</p>
+        </div>
+
+        <aside class="investment-hero">
+          <p class="label">Investimento em conteúdo digital</p>
+          <strong>R$ 7 milhões</strong>
+          <span>Produção de conteúdos educacionais digitais, modulares e reutilizáveis em larga escala.</span>
+        </aside>
+      </header>
+
+      <section class="main-grid">
+        <article class="card territory">
+          <h2><span class="ico">🌍</span>Desafio Territorial</h2>
+          <ul>
+            <li>Presença em todos os 142 municípios</li>
+            <li>Superação do vazio demográfico por meio da EaD</li>
+            <li>Ampliação do acesso à educação profissional</li>
+            <li>Atendimento equitativo entre capital e interior</li>
+          </ul>
+        </article>
+
+        <article class="card efficiency">
+          <h2><span class="ico">💰</span>Eficiência do Investimento</h2>
+          <ul>
+            <li>Conteúdo produzido uma única vez</li>
+            <li>Reutilização em cursos técnicos, FIC e itinerários</li>
+            <li>Redução do custo por aluno</li>
+            <li>Maior escala com padrão pedagógico único</li>
+          </ul>
+        </article>
+
+        <article class="card courses">
+          <h2><span class="ico">📚</span>Cursos Estratégicos nas ETECs</h2>
+          <div class="course-grid">
+            <div class="axis agro">
+              <h3>Agro e Produção</h3>
+              <div class="course">Técnico em Agricultura</div>
+              <div class="course">Técnico em Agronegócio</div>
+              <div class="course">Técnico em Agropecuária</div>
+            </div>
+            <div class="axis">
+              <h3>Gestão e Negócios</h3>
+              <div class="course">Técnico em Administração</div>
+              <div class="course">Técnico em Logística</div>
+            </div>
+            <div class="axis">
+              <h3>Tecnologia da Informação</h3>
+              <div class="course">Técnico em Informática</div>
+              <div class="course">Técnico em Desenvolvimento de Sistemas</div>
+            </div>
+            <div class="axis health">
+              <h3>Saúde</h3>
+              <div class="course">Técnico em Enfermagem</div>
+              <div class="course">Técnico em Saúde Bucal</div>
+              <div class="course">Técnico em Análises Clínicas</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card avatec infographic">
+          <h2><span class="ico">⚙</span>Por que se destaca?</h2>
+
+          <div class="info-flow">
+            <div class="info-points">
+              <div class="info-point">
+                <b>Amplia a oferta</b>
+                <small>o mesmo conteúdo digital pode ser reaproveitado em diferentes cursos.</small>
+              </div>
+
+              <div class="info-point">
+                <b>Reduz custos</b>
+                <small>produção única, com reutilização em múltiplas ofertas.</small>
+              </div>
+
+              <div class="info-point">
+                <b>Chega aos municípios</b>
+                <small>leva educação profissional de qualidade a toda a rede.</small>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      
+    </div>
+  </main>
+</div>
+</body>
+</html>

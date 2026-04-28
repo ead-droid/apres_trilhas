@@ -1,0 +1,841 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide 06 - Como o Programa Funciona</title>
+<style>
+  :root {
+    --bg: #eef4fb;
+    --paper: #ffffff;
+    --navy: #0d1f3c;
+    --navy-2: #14345f;
+    --blue: #1e5fad;
+    --blue-2: #2f80d6;
+    --blue-soft: #eaf3ff;
+    --green: #0b8f5a;
+    --green-soft: #eafaf2;
+    --gold: #f4a51c;
+    --gold-soft: #fff7e8;
+    --text: #132642;
+    --muted: #53657d;
+    --line: #d7e3f2;
+    --shadow: 0 18px 45px rgba(13, 31, 60, .11);
+    --radius: 28px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Inter, Arial, sans-serif;
+  }
+
+  body {
+    display: block;
+  }
+
+  .wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .topbar {
+    height: 66px;
+    flex: 0 0 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 76px;
+    background: linear-gradient(135deg, #0d1f3c 0%, #15315b 58%, #1e5fad 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+    box-shadow: 0 8px 24px rgba(13, 31, 60, .24);
+    color: #fff;
+  }
+
+  .topbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 48px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .03em;
+  }
+
+  .topbar-logo-mark {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    color: #4ade80;
+  }
+
+  .topbar-logo-mark::before,
+  .topbar-logo-mark::after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 8px;
+    border-radius: 13px 13px 0 13px;
+    background: currentColor;
+  }
+
+  .topbar-logo-mark::before {
+    left: 0;
+    top: 7px;
+    transform: rotate(35deg);
+  }
+
+  .topbar-logo-mark::after {
+    right: 0;
+    top: 2px;
+    color: #22d3ee;
+    background: currentColor;
+    transform: rotate(-35deg);
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: rgba(255, 255, 255, .82);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .12em;
+  }
+
+  .topbar-emblem {
+    display: grid;
+    place-items: center;
+    min-width: 132px;
+    height: 34px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+
+  .slide {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: 32px 84px 28px;
+    background:
+      radial-gradient(circle at 11% 12%, rgba(30, 95, 173, .10) 0 210px, transparent 211px),
+      radial-gradient(circle at 86% 18%, rgba(47, 128, 214, .12) 0 245px, transparent 246px),
+      radial-gradient(circle at 82% 84%, rgba(11, 143, 90, .09) 0 210px, transparent 211px),
+      linear-gradient(180deg, #f8fbff 0%, #edf4fb 100%);
+  }
+
+  .slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(30, 95, 173, .18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(110deg, transparent 0 63%, #000 78%, transparent 100%);
+    opacity: .45;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 16px;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 510px;
+    gap: 44px;
+    align-items: start;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 7px 17px;
+    border: 1px solid rgba(47, 128, 214, .30);
+    border-radius: 999px;
+    background: rgba(234, 243, 255, .86);
+    color: var(--blue);
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 850;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 17px;
+    height: 17px;
+    border: 4px solid currentColor;
+    border-left-color: transparent;
+    border-radius: 50%;
+  }
+
+  h1 {
+    margin: 12px 0 8px;
+    color: var(--navy);
+    font-size: 54px;
+    line-height: .96;
+    letter-spacing: 0;
+    font-weight: 900;
+  }
+
+  .subtitle {
+    max-width: 850px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 23px;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+
+  .insight-stack {
+    display: grid;
+    gap: 14px;
+    padding-top: 4px;
+  }
+
+  .insight {
+    min-height: 78px;
+    padding: 15px 22px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .86);
+    box-shadow: 0 12px 28px rgba(13, 31, 60, .08);
+  }
+
+  .insight.key {
+    background: linear-gradient(135deg, #fff9ed, #fffdfa);
+    border-color: rgba(244, 165, 28, .38);
+  }
+
+  .label {
+    margin: 0 0 8px;
+    color: var(--blue);
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  .insight.key .label {
+    color: #b66808;
+  }
+
+  .insight strong {
+    display: block;
+    color: var(--navy);
+    font-size: 24px;
+    line-height: 1.12;
+    font-weight: 900;
+  }
+
+  .main {
+    display: grid;
+    grid-template-rows: 178px 1fr;
+    gap: 18px;
+    min-height: 0;
+  }
+
+  .flow-card {
+    display: grid;
+    grid-template-columns: 720px minmax(0, 1fr);
+    gap: 34px;
+    align-items: center;
+    padding: 20px 30px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .90);
+    box-shadow: var(--shadow);
+  }
+
+  .flow-map {
+    display: grid;
+    grid-template-columns: 1fr 118px 1fr;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .node {
+    min-height: 108px;
+    padding: 16px 22px;
+    border-radius: 24px;
+    color: #fff;
+    box-shadow: 0 18px 34px rgba(13, 31, 60, .18);
+  }
+
+  .node.school {
+    background: linear-gradient(135deg, var(--navy-2), var(--blue));
+  }
+
+  .node.company {
+    background: linear-gradient(135deg, #08734b, #13a86f);
+  }
+
+  .node-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, .50);
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, .12);
+  }
+
+  .school-symbol,
+  .company-symbol {
+    width: 24px;
+    height: 24px;
+    position: relative;
+  }
+
+  .school-symbol::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 7px;
+    width: 20px;
+    height: 13px;
+    border: 3px solid #fff;
+    border-top: 0;
+    border-radius: 3px;
+  }
+
+  .school-symbol::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 10px solid #fff;
+  }
+
+  .company-symbol::before {
+    content: "";
+    position: absolute;
+    inset: 7px 2px 2px;
+    border: 3px solid #fff;
+    border-radius: 3px;
+  }
+
+  .company-symbol::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: 16px;
+    height: 12px;
+    background:
+      linear-gradient(135deg, transparent 0 48%, #fff 49% 62%, transparent 63%),
+      linear-gradient(45deg, transparent 0 48%, #fff 49% 62%, transparent 63%);
+  }
+
+  .node-kicker {
+    margin: 0 0 5px;
+    color: rgba(255, 255, 255, .72);
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .node-title {
+    margin: 0;
+    font-size: 26px;
+    line-height: 1.05;
+    font-weight: 900;
+  }
+
+  .connector {
+    height: 72px;
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .connector::before {
+    content: "";
+    width: 108px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--gold);
+    box-shadow: 0 0 0 8px rgba(244, 165, 28, .12);
+  }
+
+  .connector::after {
+    content: "";
+    position: absolute;
+    right: 2px;
+    width: 0;
+    height: 0;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 25px solid var(--gold);
+  }
+
+  .flow-copy h2,
+  .group h2,
+  .finance-card h2 {
+    margin: 0;
+    color: var(--navy);
+    font-size: 27px;
+    line-height: 1.12;
+    font-weight: 900;
+  }
+
+  .flow-copy p {
+    max-width: 690px;
+    margin: 13px 0 0;
+    color: #3d4f67;
+    font-size: 20px;
+    line-height: 1.34;
+    font-weight: 500;
+  }
+
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1.06fr .94fr 1.06fr;
+    gap: 24px;
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .group {
+    min-height: 0;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 14px 34px rgba(13, 31, 60, .08);
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+
+  .icon-box {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    background: var(--blue-soft);
+    color: var(--blue);
+  }
+
+  .check-icon {
+    width: 25px;
+    height: 14px;
+    border-left: 5px solid currentColor;
+    border-bottom: 5px solid currentColor;
+    transform: rotate(-45deg) translateY(-2px);
+  }
+
+  .money-icon {
+    width: 28px;
+    height: 28px;
+    border: 4px solid currentColor;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .money-icon::before {
+    content: "$";
+    position: absolute;
+    inset: -5px 0 0;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .group.bolsa {
+    background: linear-gradient(135deg, #f2fff8, #ffffff);
+    border-color: rgba(11, 143, 90, .28);
+  }
+
+  .group.bolsa .icon-box {
+    background: var(--green-soft);
+    color: var(--green);
+  }
+
+  .group.bolsa h2 {
+    color: #086945;
+  }
+
+  .features {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .features li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 14px;
+    align-items: start;
+    color: #263a55;
+    font-size: 19px;
+    line-height: 1.26;
+    font-weight: 650;
+  }
+
+  .features li::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-top: 9px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 6px rgba(30, 95, 173, .12);
+  }
+
+  .peq {
+    margin: 0 0 14px;
+    color: var(--green);
+    font-size: 34px;
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .bolsa p {
+    margin: 0;
+    color: #2f435c;
+    font-size: 18px;
+    line-height: 1.34;
+    font-weight: 520;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #08734b;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .badge::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .finance-wrap {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 14px;
+  }
+
+  .finance-card {
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    box-shadow: 0 18px 42px rgba(13, 31, 60, .17);
+    color: #fff;
+  }
+
+  .finance-card h2 {
+    color: #fff;
+  }
+
+  .finance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .value-box {
+    padding: 16px 17px 15px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, .09);
+  }
+
+  .value-label {
+    margin: 0 0 10px;
+    color: rgba(255, 255, 255, .74);
+    font-size: 14px;
+    font-weight: 850;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .value {
+    margin: 0;
+    color: #fff;
+    font-size: 23px;
+    line-height: 1;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+
+  .value.gold {
+    color: #ffe08a;
+  }
+
+  .finance-note {
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, .80);
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .investment {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 15px 22px;
+    border: 1px solid rgba(244, 165, 28, .36);
+    border-radius: 24px;
+    background: var(--gold-soft);
+    box-shadow: 0 12px 28px rgba(13, 31, 60, .07);
+  }
+
+  .investment .icon-box {
+    width: 58px;
+    height: 58px;
+    border-radius: 20px;
+    background: var(--gold);
+    color: #fff;
+  }
+
+  .investment-label {
+    margin: 0 0 8px;
+    color: #a85c00;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .investment strong {
+    display: block;
+    color: var(--navy);
+    font-size: 22px;
+    line-height: 1.12;
+    font-weight: 900;
+  }
+
+  .closing {
+    min-height: 56px;
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 11px 22px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: #fff;
+    box-shadow: 0 16px 34px rgba(13, 31, 60, .18);
+  }
+
+  .closing-mark {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(244, 165, 28, .55);
+    border-radius: 50%;
+    background: rgba(244, 165, 28, .16);
+    color: var(--gold);
+    font-size: 23px;
+    font-weight: 900;
+  }
+
+  .closing p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 850;
+  }
+
+  @media (max-height: 820px) {
+    .slide {
+      padding-top: 24px;
+      padding-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 49px;
+    }
+
+    .subtitle {
+      font-size: 21px;
+    }
+
+    .main {
+      grid-template-rows: 166px 1fr;
+    }
+
+    .closing p {
+      font-size: 18px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="topbar">
+  <div class="topbar-logo">
+    
+   
+  </div>
+  <div class="topbar-right">
+    <span class="topbar-emblem">MATO GROSSO</span>
+    <span>06 / 18</span>
+  </div>
+</div>
+
+<main class="slide" aria-label="Como o Programa Funciona">
+  <div class="content">
+    <header class="top">
+      <div>
+        <div class="eyebrow">Operação do programa</div>
+        <h1>Como o Programa Funciona</h1>
+        <p class="subtitle">Alternância entre escola e empresa, com duração flexível e apoio financeiro ao estudante.</p>
+      </div>
+
+      <aside class="insight-stack" aria-label="Resumo estratégico">
+        <div class="insight">
+          <p class="label">Lógica central</p>
+          <strong>Escola + Empresa + Bolsa</strong>
+        </div>
+        <div class="insight key">
+          <p class="label">Entrega-chave</p>
+          <strong>Formação com vivência produtiva e incentivo à permanência</strong>
+        </div>
+      </aside>
+    </header>
+
+    <section class="main">
+      <div class="flow-card">
+        <div class="flow-map" aria-label="Fluxo Escola para Empresa">
+          <div class="node school">
+            <div class="node-icon"><span class="school-symbol"></span></div>
+            <p class="node-kicker">Unidade Formativa</p>
+            <p class="node-title">Escola / ETEC</p>
+          </div>
+
+          <div class="connector" aria-hidden="true"></div>
+
+          <div class="node company">
+            <div class="node-icon"><span class="company-symbol"></span></div>
+            <p class="node-kicker">Ambiente Produtivo</p>
+            <p class="node-title">Empresa</p>
+          </div>
+        </div>
+
+        <div class="flow-copy">
+          <p class="label">Fluxo da oferta</p>
+          <h2>Alternância orientada entre formação e prática</h2>
+          <p>Os estudantes alternam períodos na unidade formativa e no ambiente produtivo, conforme a complexidade da área de formação.</p>
+        </div>
+      </div>
+
+      <div class="bottom-grid">
+        <section class="group">
+          <div class="group-header">
+            <div class="icon-box"><span class="check-icon"></span></div>
+            <h2>Modelo de funcionamento</h2>
+          </div>
+          <ul class="features">
+            <li>Duração de até 2 anos</li>
+            <li>Público de 15 a 24 anos</li>
+            <li>Cursos modulares por semestre</li>
+            <li>Formação presencial, híbrida e prática</li>
+          </ul>
+        </section>
+
+        <section class="group bolsa">
+          <div class="group-header">
+            <div class="icon-box"><span class="money-icon"></span></div>
+            <h2>Bolsa ao estudante</h2>
+          </div>
+          <div class="peq">Bolsa PEQ</div>
+          <p>Os participantes recebem bolsa correspondente a <strong>1½ salário mínimo</strong>, calculado por hora-atividade.</p>
+          <div class="badge">Apoio à permanência</div>
+        </section>
+
+        <section class="finance-wrap" aria-label="Valores e investimento">
+          <div class="finance-card">
+            <p class="label" style="color:rgba(255,255,255,.72)">Valores-base</p>
+            <h2>Referência financeira</h2>
+            <div class="finance-grid">
+              <div class="value-box">
+                <p class="value-label">Salário mínimo</p>
+                <p class="value">R$ 1.621,00</p>
+              </div>
+              <div class="value-box">
+                <p class="value-label">Bolsa mensal</p>
+                <p class="value gold">R$ 2.431,50</p>
+              </div>
+            </div>
+            <p class="finance-note">Base para estimar o investimento em escala.</p>
+          </div>
+
+          <div class="investment">
+            <div class="icon-box"><span class="money-icon"></span></div>
+            <div>
+              <p class="investment-label">Investimento com bolsa</p>
+              <strong>R$ 58.356,00 por aluno em 2 anos</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="closing">
+      <div class="closing-mark">!</div>
+      <p>Formação, experiência prática e incentivo financeiro fortalecem permanência e inserção produtiva.</p>
+    </footer>
+  </div>
+</main>
+</div>
+</body>
+</html>
