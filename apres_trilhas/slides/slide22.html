@@ -152,45 +152,27 @@ body{
 }
 
 h1{
-  margin:10px 0 4px;
+  margin:10px 0 6px;
   color:var(--navy);
   font-size:50px;
-  line-height:.94;
+  line-height:.96;
   font-weight:950;
   letter-spacing:-.055em;
 }
 
-.subtitle{
-  margin:0;
-  max-width:1040px;
-  display:grid;
-  gap:6px;
-}
-
-.desc-title{
-  display:block;
-  color:var(--navy);
-  font-size:22px;
-  line-height:1.06;
-  font-weight:920;
-  letter-spacing:-.03em;
-}
-
-.desc-title::after{
-  content:"";
-  display:block;
+.title-divider{
   width:86px;
-  height:5px;
-  margin-top:10px;
+  height:6px;
+  margin:8px 0 12px;
   border-radius:999px;
   background:linear-gradient(90deg,var(--blue),var(--cyan));
 }
 
-.desc-text{
-  display:block;
-  max-width:1000px;
+.desc{
+  margin:0;
+  max-width:980px;
   color:#52657f;
-  font-size:22px;
+  font-size:23px;
   line-height:1.22;
   font-weight:650;
 }
@@ -198,53 +180,57 @@ h1{
 /* INVESTIMENTO SUPERIOR */
 .summary-card{
   border-radius:28px;
-  padding:22px 24px 24px;
+  padding:22px 24px;
   color:#fff;
   background:
-    radial-gradient(circle at 92% 12%,rgba(255,255,255,.10) 0 92px,transparent 93px),
-    linear-gradient(145deg,#0a254b 0%,#174a8d 58%,#2b6fc3 100%);
-  border:1px solid rgba(255,255,255,.14);
+    radial-gradient(circle at 95% 5%,rgba(255,255,255,.13) 0 88px,transparent 89px),
+    linear-gradient(145deg,#071936 0%,#123f7b 58%,#2476cf 100%);
+  border:2px solid rgba(255,255,255,.18);
   box-shadow:0 22px 48px rgba(11,29,59,.24);
   position:relative;
   overflow:hidden;
 }
 
 .summary-card h2{
-  margin:0 0 12px;
-  color:rgba(255,255,255,.86);
-  font-size:15px;
-  line-height:1.1;
+  margin:0 0 16px;
+  color:#fff;
+  font-size:34px;
+  line-height:1;
   font-weight:950;
-  letter-spacing:.16em;
-  text-transform:uppercase;
+  letter-spacing:-.04em;
 }
 
-.summary-value{
+.summary-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.summary-box{
+  padding:18px 20px;
+  border-radius:20px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.18);
+}
+
+.summary-box span{
   display:block;
-  margin:0;
-  color:#ffe08a;
-  font-size:58px;
-  line-height:.98;
-  font-weight:950;
-  letter-spacing:-.05em;
-}
-
-.summary-desc{
-  margin:12px 0 0;
-  color:#ffffff;
-  font-size:18px;
-  line-height:1.24;
-  font-weight:820;
-  max-width:320px;
-}
-
-.summary-desc small{
-  display:block;
-  margin-top:10px;
   color:rgba(255,255,255,.78);
-  font-size:13px;
-  line-height:1.25;
-  font-weight:700;
+  font-size:14px;
+  line-height:1.05;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.10em;
+}
+
+.summary-box strong{
+  display:block;
+  margin-top:9px;
+  color:#ffe08a;
+  font-size:31px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.035em;
 }
 
 /* GRID PRINCIPAL */
@@ -253,7 +239,7 @@ h1{
   display:grid;
   grid-template-columns:.82fr 1.22fr .9fr;
   gap:18px;
-  align-items:stretch;
+  align-items:start;
 }
 
 .panel{
@@ -321,7 +307,7 @@ h1{
 
 .diff-list{
   display:grid;
-  gap:18px;
+  gap:10px;
   align-content:start;
   padding-top:2px;
 }
@@ -348,7 +334,7 @@ h1{
 .diff-item strong{
   display:block;
   color:var(--navy);
-  font-size:25px;
+  font-size:19px;
   line-height:1.08;
   font-weight:950;
   letter-spacing:-.02em;
@@ -358,9 +344,9 @@ h1{
   display:block;
   margin-top:3px;
   color:#50657f;
-  font-size:20px;
+  font-size:15px;
   line-height:1.15;
-  font-weight:400;
+  font-weight:700;
 }
 
 /* COMPOSIÇÃO */
@@ -368,7 +354,7 @@ h1{
   padding:22px;
   display:grid;
   grid-template-rows:auto minmax(0,1fr);
-  gap:24px;
+  gap:14px;
 }
 
 .composition-panel .icon{
@@ -438,7 +424,7 @@ h1{
 .row-content h3{
   margin:0 0 4px;
   color:var(--navy);
-  font-size:25px;
+  font-size:22px;
   line-height:1.05;
   font-weight:950;
   letter-spacing:-.02em;
@@ -447,14 +433,14 @@ h1{
 .row-content p{
   margin:0;
   color:#48607c;
-  font-size:20px;
+  font-size:15.5px;
   line-height:1.16;
-  font-weight:400;
+  font-weight:720;
 }
 
 .row-value{
   color:var(--navy);
-  font-size:25px;
+  font-size:24px;
   line-height:1;
   font-weight:950;
   letter-spacing:-.03em;
@@ -551,43 +537,6 @@ h1{
   font-size:24px;
 }
 
-.cert-info{
-  margin-top:2px;
-  padding:16px 18px;
-  border-radius:22px;
-  background:linear-gradient(135deg,#eef8f3,#ffffff);
-  border:1px solid rgba(11,143,90,.18);
-  box-shadow:0 10px 22px rgba(13,31,60,.06);
-}
-
-.cert-info-label{
-  display:block;
-  margin-bottom:6px;
-  color:var(--green);
-  font-size:13px;
-  line-height:1;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-.cert-info strong{
-  display:block;
-  color:var(--navy);
-  font-size:28px;
-  line-height:1.02;
-  font-weight:950;
-  letter-spacing:-.035em;
-}
-
-.cert-info p{
-  margin:7px 0 0;
-  color:#4e647e;
-  font-size:16px;
-  line-height:1.2;
-  font-weight:700;
-}
-
 /* RODAPÉ */
 .footer{
   height:54px;
@@ -636,12 +585,8 @@ h1{
     font-size:42px;
   }
 
-  .desc-title{
-    font-size:20px;
-  }
-
-  .desc-text{
-    font-size:20px;
+  .desc{
+    font-size:22px;
   }
 
   .header{
@@ -654,15 +599,15 @@ h1{
   }
 
   .summary-card h2{
-    font-size:14px;
+    font-size:30px;
   }
 
-  .summary-value{
-    font-size:48px;
+  .summary-box span{
+    font-size:12px;
   }
 
-  .summary-desc{
-    font-size:16px;
+  .summary-box strong{
+    font-size:26px;
   }
 
   .panel-title{
@@ -684,11 +629,11 @@ h1{
   }
 
   .diff-item strong{
-    font-size:23px;
+    font-size:18px;
   }
 
   .diff-item small{
-    font-size:18px;
+    font-size:14px;
   }
 
   .row-item{
@@ -696,11 +641,11 @@ h1{
   }
 
   .row-content h3{
-    font-size:23px;
+    font-size:19px;
   }
 
   .row-content p{
-    font-size:18px;
+    font-size:14px;
   }
 
   .row-value{
@@ -733,14 +678,6 @@ h1{
     font-size:22px;
   }
 
-  .cert-info strong{
-    font-size:24px;
-  }
-
-  .cert-info p{
-    font-size:15px;
-  }
-
   .footer p{
     font-size:17px;
   }
@@ -764,16 +701,27 @@ h1{
 
         <h1>Certifica MT</h1>
 
-        <p class="subtitle">
-          <span class="desc-title">Reconhecimento formal de competências profissionais</span>
-          <span class="desc-text">Certificação de saberes adquiridos na prática, ampliando oportunidades para trabalhadores sem formação escolar correspondente e utilizando a estrutura já existente da rede.</span>
+        <div class="title-divider"></div>
+
+        <p class="desc">
+          Reconhecimento formal de competências profissionais adquiridas na prática, ampliando oportunidades de certificação para trabalhadores sem formação escolar correspondente.
         </p>
       </div>
 
       <aside class="summary-card">
-        <h2>Investimento em certificação</h2>
-        <div class="summary-value">R$ 1,7 milhão</div>
-        <p class="summary-desc">Projeção anual corrigida para execução da certificação por competências em toda a rede.<small>Valor anual estimado: R$ 1.713.374,40</small></p>
+        <h2>Investimento</h2>
+
+        <div class="summary-grid">
+          <div class="summary-box">
+            <span>Certificações</span>
+            <strong>360 profissionais</strong>
+          </div>
+
+          <div class="summary-box">
+            <span>Total anual</span>
+            <strong>R$ 1.713.374,40</strong>
+          </div>
+        </div>
       </aside>
     </section>
 
@@ -786,6 +734,7 @@ h1{
         </h2>
 
         <p class="certifica-text">
+          Reconhecer e certificar saberes profissionais adquiridos na prática, utilizando a estrutura já existente da rede.
         </p>
 
         <div class="diff-list">
@@ -894,12 +843,6 @@ h1{
             <span>💻</span>
             Tecnologia da Informação
           </div>
-        </div>
-
-        <div class="cert-info">
-          <span class="cert-info-label">Certificações previstas</span>
-          <strong>360 profissionais por ano</strong>
-          <p>Estimativa anual de atendimento com aproveitamento da estrutura já existente da rede.</p>
         </div>
       </section>
 

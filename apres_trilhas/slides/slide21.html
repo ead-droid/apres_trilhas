@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Slide 21 - Jovem Produtivo MT | Trilhas de Inserção Produtiva</title>
+<title>Trilhas de Inserção Produtiva para Jovens</title>
 
 <style>
 :root{
@@ -38,16 +38,18 @@ html,body{
   -moz-osx-font-smoothing:grayscale;
 }
 body{
-  width:100%;
-  height:100%;
+  display:grid;
+  place-items:center;
 }
 
-/* Tela cheia: sem limitação de palco 16:9 */
+/* Palco padrão 16:9 */
 .deck{
-  width:100%;
-  height:100%;
+  width:min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio:16/9;
+  max-height:100vh;
   overflow:hidden;
   background:#edf4fb;
+  box-shadow:0 18px 60px rgba(7,25,54,.18);
 }
 .wrap{
   width:100%;
@@ -152,31 +154,21 @@ body{
   box-shadow:0 10px 24px rgba(29,99,184,.08);
 }
 h1{
-  margin:10px 0 4px;
+  margin:9px 0 6px;
   color:var(--navy);
-  font-size:54px;
-  line-height:.94;
+  font-size:46px;
+  line-height:.96;
   font-weight:950;
   letter-spacing:-.055em;
 }
-.hero-title{
-  margin:0;
-  color:var(--navy);
-  font-size:25px;
-  line-height:1.06;
-  font-weight:950;
-  letter-spacing:-.035em;
-}
-.hero-title::after{
-  content:"";
-  display:block;
-  width:78px;
+.title-divider{
+  width:84px;
   height:6px;
-  margin:10px 0 10px;
+  margin:7px 0 10px;
   border-radius:999px;
-  background:linear-gradient(90deg,var(--blue),var(--blue2));
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
 }
-.hero-text{
+.desc{
   margin:0;
   max-width:1030px;
   color:#52657f;
@@ -240,7 +232,7 @@ h1{
   min-height:0;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:14px;
 }
 .card{
   min-height:0;
@@ -251,7 +243,7 @@ h1{
   overflow:hidden;
   display:grid;
   grid-template-rows:auto auto auto 1fr auto;
-  padding:22px 20px 20px;
+  padding:20px 18px 18px;
   position:relative;
 }
 .card::before{
@@ -273,13 +265,13 @@ h1{
   margin-bottom:12px;
 }
 .card-icon{
-  width:50px;
-  height:50px;
+  width:44px;
+  height:44px;
   border-radius:16px;
   display:grid;
   place-items:center;
   color:#fff;
-  font-size:25px;
+  font-size:22px;
   font-weight:950;
   background:linear-gradient(135deg,var(--blue),var(--blue2));
   flex:0 0 auto;
@@ -289,7 +281,7 @@ h1{
 .card:nth-child(4) .card-icon{background:linear-gradient(135deg,#6d28d9,var(--purple))}
 .trilha{
   color:#64748b;
-  font-size:13px;
+  font-size:12px;
   line-height:1;
   font-weight:950;
   letter-spacing:.12em;
@@ -298,60 +290,42 @@ h1{
 .card h2{
   margin:0;
   color:var(--navy);
-  font-size:28px;
+  font-size:24px;
   line-height:1.05;
   font-weight:950;
   letter-spacing:-.035em;
 }
 .card h3{
-  margin:0 0 16px;
+  margin:0 0 12px;
   color:var(--blue);
-  font-size:18.5px;
-  line-height:1.28;
+  font-size:16px;
+  line-height:1.18;
   font-weight:900;
 }
 .card:nth-child(2) h3{color:var(--green)}
 .card:nth-child(3) h3{color:#b26a00}
 .card:nth-child(4) h3{color:var(--purple)}
 .card p{
-  margin:0 0 18px;
-  color:#4b5563;
-  font-size:21px;
-  line-height:1.48;
-  font-weight:500;
+  margin:0 0 11px;
+  color:#475569;
+  font-size:15.7px;
+  line-height:1.35;
+  font-weight:630;
 }
 .card strong{
   color:#10203d;
-  font-weight:850;
+  font-weight:900;
 }
 .estado{
   margin-top:auto;
-  padding:18px 20px;
-  border-radius:20px;
+  padding:14px 14px;
+  border-radius:18px;
   background:#f6faff;
   border:1px solid #dbe8f7;
-  color:#374151;
-  min-height:96px;
-  display:block;
-}
-
-.estado strong{
-  display:block;
-  margin:0 0 7px;
-  color:#0f172a;
-  font-size:18px;
-  line-height:1.05;
-  font-weight:950;
-  letter-spacing:-.015em;
-}
-
-.estado span{
-  display:block;
-  color:#374151;
-  font-size:18.5px;
-  line-height:1.26;
-  font-weight:520;
-  letter-spacing:-.005em;
+  color:#334155;
+  font-size:14.3px;
+  line-height:1.32;
+  font-weight:660;
 }
 .card:nth-child(2) .estado{
   background:#f2fbf7;
@@ -365,7 +339,9 @@ h1{
   background:#f7f2ff;
   border-color:#ddd0ff;
 }
-
+.estado strong{
+  color:#0f172a;
+}
 
 /* RODAPÉ PRESERVADO NO PADRÃO */
 .footer{
@@ -431,42 +407,24 @@ h1{
     font-size:19px;
   }
   .cards{
-    gap:12px;
+    gap:11px;
   }
   .card{
-    padding:19px 17px 17px;
+    padding:17px 15px 15px;
     border-radius:24px;
   }
-  .card-icon{
-    width:46px;
-    height:46px;
-    font-size:23px;
-  }
-  .trilha{
-    font-size:12px;
-  }
   .card h2{
-    font-size:23px;
+    font-size:20px;
   }
   .card h3{
-    font-size:16px;
+    font-size:14.5px;
   }
   .card p{
-    font-size:18px;
-    line-height:1.44;
-    font-weight:500;
+    font-size:13.7px;
   }
   .estado{
-    padding:15px 15px;
-    min-height:82px;
-  }
-
-  .estado strong{
-    font-size:16px;
-  }
-
-  .estado span{
-    font-size:15.5px;
+    font-size:12.6px;
+    padding:11px 12px;
   }
   .footer p{
     font-size:15.5px;
@@ -484,17 +442,17 @@ h1{
     <div class="emblem">MATO GROSSO</div>
   </header>
 
-  <main class="slide" aria-label="Jovem Produtivo MT | Trilhas de Inserção Produtiva">
+  <main class="slide" aria-label="Trilhas de Inserção Produtiva para Jovens">
 
     <section class="header">
       <div>
-        <div class="eyebrow">Programa Jovem Aprendiz</div>
+        <div class="eyebrow">Programa de Inserção Produtiva</div>
 
-        <h1>Jovem Produtivo MT</h1>
+        <h1>Trilhas de Inserção Produtiva para Jovens</h1>
 
-        <p class="hero-title">Qualificação Profissional em Parceria com Empresas Mato-grossenses</p>
+        <div class="title-divider"></div>
 
-        <p class="hero-text">
+        <p class="desc">
           Quatro modelos de atuação para diferentes perfis de jovens, empresas e territórios,
           integrando formação, acompanhamento, prática produtiva e apoio do Estado.
         </p>
@@ -538,7 +496,9 @@ h1{
           e amplia a previsibilidade para o empregador.
         </p>
 
-        <div class="estado"><strong>Papel do Estado</strong><span>custear a formação teórica e subsidiar parcialmente a bolsa.</span></div>
+        <div class="estado">
+          <strong>Papel do Estado:</strong> custear a formação teórica e subsidiar parcialmente a bolsa.
+        </div>
       </article>
 
       <article class="card">
@@ -561,7 +521,9 @@ h1{
           <strong>acompanhamento produtivo nas empresas</strong>.
         </p>
 
-        <div class="estado"><strong>Papel do Estado</strong><span>apoiar bolsa, tutores, supervisores e acompanhamento técnico.</span></div>
+        <div class="estado">
+          <strong>Papel do Estado:</strong> apoiar bolsa, tutores, supervisores e acompanhamento técnico.
+        </div>
       </article>
 
       <article class="card">
@@ -583,7 +545,9 @@ h1{
           Combina <strong>formação EAD</strong>, <strong>mentoria prática</strong> e acompanhamento pela ETEC.
         </p>
 
-        <div class="estado"><strong>Papel do Estado</strong><span>oferecer bolsa de transição, microcrédito orientado e apoio formativo.</span></div>
+        <div class="estado">
+          <strong>Papel do Estado:</strong> oferecer bolsa de transição, microcrédito orientado e apoio formativo.
+        </div>
       </article>
 
       <article class="card">
@@ -606,7 +570,9 @@ h1{
           e mentoria aplicada.
         </p>
 
-        <div class="estado"><strong>Papel do Estado</strong><span>financiar formação, acompanhamento e mentoria para projetos colaborativos.</span></div>
+        <div class="estado">
+          <strong>Papel do Estado:</strong> financiar formação, acompanhamento e mentoria para projetos colaborativos.
+        </div>
       </article>
     </section>
 

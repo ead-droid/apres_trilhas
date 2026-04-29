@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide 21 - Jovem Produtivo MT | Infográfico com Calculadora</title>
+
+<style>
+:root{
+  --navy:#071936;
+  --blue:#1d63b8;
+  --blue2:#2f80d6;
+  --green:#078457;
+  --green2:#12a06b;
+  --gold:#f2a51f;
+  --cyan:#1da9d7;
+  --ink:#10203d;
+  --muted:#50657f;
+  --paper:#ffffff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  margin:0;
+  overflow:hidden;
+  background:#edf4fb;
+  color:var(--ink);
+  font-family:"Segoe UI", Inter, Arial, sans-serif;
+}
+
+body{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.wrap{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#edf4fb;
+}
+
+/* TOPO */
+.topbar{
+  height:56px;
+  flex:0 0 56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 58px;
+  background:linear-gradient(135deg,#071936 0%,#12366a 58%,#1d63b8 100%);
+  color:#fff;
+  box-shadow:0 10px 26px rgba(8,22,46,.24);
+  position:relative;
+  z-index:10;
+}
+
+.topbar-logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.03em;
+}
+
+.topbar-logo::before{
+  content:"";
+  width:17px;
+  height:17px;
+  border-radius:6px 12px 6px 12px;
+  background:linear-gradient(135deg,#42e39b,#22d3ee);
+  box-shadow:0 0 18px rgba(34,211,238,.28);
+}
+
+.emblem{
+  display:grid;
+  place-items:center;
+  min-width:132px;
+  height:30px;
+  padding:0 14px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.09em;
+}
+
+/* FUNDO */
+.slide{
+  position:relative;
+  flex:1;
+  min-height:0;
+  padding:18px 34px 22px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 14%, rgba(29,99,184,.10) 0 230px, transparent 231px),
+    radial-gradient(circle at 94% 10%, rgba(18,160,107,.11) 0 300px, transparent 301px),
+    radial-gradient(circle at 76% 90%, rgba(242,165,31,.10) 0 260px, transparent 261px),
+    linear-gradient(180deg,#f8fbff 0%,#edf4fb 100%);
+}
+
+.slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(29,99,184,.14) 1px, transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(110deg, transparent 0 56%, #000 78%, transparent 100%);
+  opacity:.16;
+  pointer-events:none;
+}
+
+.content{
+  position:relative;
+  z-index:1;
+  height:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 560px;
+  gap:22px;
+}
+
+/* COLUNA ESQUERDA */
+.left-panel{
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+  gap:10px;
+}
+
+/* TÍTULO */
+.hero{
+  padding:2px 0 0;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  width:fit-content;
+  padding:8px 18px;
+  border-radius:999px;
+  border:1px solid rgba(29,99,184,.24);
+  background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(234,244,255,.92));
+  color:var(--blue);
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  box-shadow:0 10px 24px rgba(29,99,184,.08);
+}
+
+h1{
+  margin:10px 0 4px;
+  color:var(--navy);
+  font-size:54px;
+  line-height:.94;
+  font-weight:950;
+  letter-spacing:-.055em;
+}
+
+.hero-title{
+  margin:0;
+  color:var(--navy);
+  font-size:25px;
+  line-height:1.06;
+  font-weight:950;
+  letter-spacing:-.035em;
+}
+
+.hero-title::after{
+  content:"";
+  display:block;
+  width:78px;
+  height:6px;
+  margin:10px 0 10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--blue),var(--blue2));
+}
+
+.hero-text{
+  margin:0;
+  max-width:860px;
+  color:#445b75;
+  font-size:20px;
+  line-height:1.24;
+  font-weight:580;
+}
+
+/* INFOGRÁFICO */
+.main-infographic{
+  min-height:0;
+  position:relative;
+  overflow:visible;
+}
+
+.info-center{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+}
+
+.orbit{
+  position:absolute;
+  border-radius:50%;
+  border:2px dashed rgba(29,99,184,.22);
+}
+
+.orbit-1{
+  width:600px;
+  height:415px;
+}
+
+.orbit-2{
+  width:820px;
+  height:340px;
+  border-color:rgba(11,143,90,.20);
+  transform:rotate(-9deg);
+}
+
+/* CARD CENTRAL */
+.core{
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:32px;
+  background:linear-gradient(145deg,#0a2250 0%, #123f7b 55%, #1f65bb 100%);
+  color:#fff;
+  box-shadow:0 28px 65px rgba(8,22,46,.28);
+  border:10px solid rgba(255,255,255,.78);
+  z-index:2;
+}
+
+.core span{
+  color:#ffe08a;
+  font-size:17px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+}
+
+.core strong{
+  display:block;
+  margin-top:10px;
+  font-size:42px;
+  line-height:.94;
+  font-weight:950;
+  letter-spacing:-.05em;
+}
+
+.core small{
+  display:block;
+  margin-top:14px;
+  color:rgba(255,255,255,.90);
+  font-size:19px;
+  line-height:1.10;
+  font-weight:760;
+}
+
+/* CARDS */
+.info-card{
+  position:absolute;
+  width:420px;
+  min-height:220px;
+  border-radius:30px;
+  overflow:visible;
+  z-index:4;
+}
+
+.info-card .connector{
+  position:absolute;
+  height:6px;
+  width:240px;
+  border-radius:999px;
+  z-index:0;
+  box-shadow:0 0 12px rgba(29,99,184,.14);
+}
+
+.info-card .card-body{
+  position:relative;
+  z-index:2;
+  width:100%;
+  min-height:220px;
+  padding:22px 24px;
+  border-radius:30px;
+  background:rgba(255,255,255,.98);
+  border:1px solid rgba(126,157,193,.34);
+  box-shadow:0 18px 38px rgba(13,31,60,.12);
+  backdrop-filter:blur(8px);
+}
+
+.info-card h3{
+  margin:12px 0 10px;
+  color:var(--navy);
+  font-size:31px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.04em;
+}
+
+.info-card p{
+  margin:0;
+  color:#425872;
+  font-size:19px;
+  line-height:1.15;
+  font-weight:730;
+}
+
+.info-card strong{
+  display:inline-flex;
+  margin-top:16px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(29,99,184,.09);
+  color:var(--blue);
+  font-size:14px;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.num{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  font-size:19px;
+  font-weight:950;
+  box-shadow:0 10px 22px rgba(29,99,184,.22);
+}
+
+/* POSICIONAMENTO DOS CARDS */
+.info-a{
+  left:0;
+  top:10px;
+}
+
+.info-b{
+  right:0;
+  top:10px;
+}
+
+.info-c{
+  left:0;
+  bottom:8px;
+}
+
+.info-d{
+  right:0;
+  bottom:8px;
+}
+
+/* LINHAS SAINDO POR TRÁS DOS CARDS */
+.info-a .connector{
+  right:-185px;
+  top:108px;
+  background:linear-gradient(90deg,#2f80d6 0%, rgba(47,128,214,.92) 35%, rgba(47,128,214,0) 100%);
+  transform:rotate(8deg);
+}
+
+.info-b .connector{
+  left:-185px;
+  top:108px;
+  background:linear-gradient(270deg,#12a06b 0%, rgba(18,160,107,.92) 35%, rgba(18,160,107,0) 100%);
+  transform:rotate(-8deg);
+}
+
+.info-c .connector{
+  right:-185px;
+  top:108px;
+  background:linear-gradient(90deg,#f2a51f 0%, rgba(242,165,31,.92) 35%, rgba(242,165,31,0) 100%);
+  transform:rotate(-8deg);
+}
+
+.info-d .connector{
+  left:-185px;
+  top:108px;
+  background:linear-gradient(270deg,#18a0b5 0%, rgba(24,160,181,.92) 35%, rgba(24,160,181,0) 100%);
+  transform:rotate(8deg);
+}
+
+/* CORES DOS NÚMEROS / BADGES */
+.info-b .num{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+}
+
+.info-b strong{
+  background:rgba(11,143,90,.11);
+  color:var(--green);
+}
+
+.info-c .num{
+  background:linear-gradient(135deg,var(--gold),#ffbd36);
+}
+
+.info-c strong{
+  background:rgba(242,165,31,.14);
+  color:#9b6308;
+}
+
+.info-d .num{
+  background:linear-gradient(135deg,#0d47a1,#18a0b5);
+}
+
+.info-d strong{
+  background:rgba(29,99,184,.09);
+  color:#1d63b8;
+}
+
+/* COLUNA DIREITA */
+.right-panel{
+  min-height:0;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+  gap:16px;
+  align-content:start;
+}
+
+/* CARD FINANCEIRO */
+.finance-hero{
+  width:560px;
+  min-height:230px;
+  border-radius:28px;
+  padding:18px 18px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 94% 4%,rgba(255,255,255,.13) 0 88px,transparent 89px),
+    linear-gradient(145deg,#071936 0%,#123f7b 55%,#2476cf 100%);
+  border:2px solid rgba(255,255,255,.20);
+  box-shadow:0 22px 48px rgba(11,29,59,.26);
+  overflow:hidden;
+  position:relative;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:12px;
+}
+
+.finance-hero::before{
+  content:"";
+  position:absolute;
+  inset:9px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.10);
+  pointer-events:none;
+}
+
+.finance-hero::after{
+  content:"";
+  position:absolute;
+  right:-58px;
+  top:-76px;
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+}
+
+.finance-top{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+}
+
+.badge{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.24);
+  font-size:20px;
+  font-weight:950;
+  flex:0 0 auto;
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+}
+
+.finance-top h2{
+  margin:0;
+  color:#ffffff;
+  font-size:31px;
+  line-height:.98;
+  font-weight:950;
+  letter-spacing:-.035em;
+  text-shadow:0 2px 10px rgba(0,0,0,.16);
+}
+
+.finance-top p{
+  margin:6px 0 0;
+  color:rgba(255,255,255,.91);
+  font-size:15.5px;
+  line-height:1.14;
+  font-weight:750;
+  max-width:460px;
+}
+
+.finance-grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:10px;
+  min-height:0;
+}
+
+.finance-metric{
+  min-height:82px;
+  padding:13px 13px;
+  border-radius:20px;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.22);
+  display:grid;
+  align-content:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.finance-metric span{
+  display:block;
+  color:rgba(255,255,255,.84);
+  font-size:12px;
+  line-height:1.08;
+  font-weight:950;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.finance-metric strong{
+  display:block;
+  margin-top:7px;
+  color:#fff2be;
+  font-size:28px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.035em;
+  text-shadow:0 2px 10px rgba(0,0,0,.16);
+}
+
+.finance-total{
+  grid-column:1 / -1;
+  min-height:72px;
+  padding:12px 15px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#fff8e9 0%,#ffffff 100%);
+  border:2px solid rgba(255,224,138,.88);
+  color:#132642;
+  display:grid;
+  grid-template-columns:1fr auto;
+  grid-template-rows:auto auto;
+  column-gap:14px;
+  align-items:center;
+  box-shadow:0 12px 26px rgba(0,0,0,.11);
+}
+
+.finance-total span{
+  display:block;
+  grid-column:1;
+  grid-row:1;
+  color:#25405f;
+  font-size:13px;
+  line-height:1.08;
+  font-weight:950;
+}
+
+.finance-total strong{
+  display:block;
+  grid-column:2;
+  grid-row:1 / span 2;
+  color:#071936;
+  font-size:38px;
+  line-height:.96;
+  font-weight:950;
+  letter-spacing:-.045em;
+  white-space:nowrap;
+}
+
+.finance-total em{
+  display:block;
+  grid-column:1;
+  grid-row:2;
+  color:#1d63b8;
+  font-size:16px;
+  line-height:1.05;
+  font-style:normal;
+  font-weight:950;
+}
+
+/* CALCULADORA */
+.calculator-card{
+  width:560px;
+  border-radius:28px;
+  padding:20px 22px;
+  background:linear-gradient(145deg,#ffffff,#f6fbff);
+  border:1px solid rgba(126,157,193,.36);
+  box-shadow:0 18px 42px rgba(13,31,60,.12);
+  position:relative;
+  overflow:hidden;
+}
+
+.calculator-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:7px;
+  background:linear-gradient(180deg,var(--green),var(--blue2));
+}
+
+.calc-header{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:14px;
+}
+
+.calc-icon{
+  width:52px;
+  height:52px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:linear-gradient(135deg,var(--green),var(--blue2));
+  font-size:27px;
+  font-weight:950;
+  box-shadow:0 12px 24px rgba(13,31,60,.16);
+  flex:0 0 auto;
+}
+
+.calc-header h3{
+  margin:0;
+  color:var(--navy);
+  font-size:38px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.04em;
+}
+
+/* CAMPOS MENORES */
+.calc-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.field{
+  display:grid;
+  gap:5px;
+}
+
+.field label{
+  color:#334966;
+  font-size:14px;
+  line-height:1.1;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.field input{
+  width:100%;
+  height:52px;
+  border-radius:16px;
+  border:2px solid rgba(126,157,193,.42);
+  background:#fff;
+  color:var(--navy);
+  padding:0 14px;
+  font-size:29px;
+  font-weight:950;
+  outline:none;
+  box-shadow:inset 0 1px 0 rgba(13,31,60,.04);
+}
+
+.field input:focus{
+  border-color:rgba(29,99,184,.72);
+  box-shadow:0 0 0 4px rgba(29,99,184,.10);
+}
+
+/* RESULTADO ÚNICO EM MESES */
+.calc-results{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0;
+}
+
+.result-box{
+  min-height:142px;
+  padding:22px 24px;
+  border-radius:24px;
+  display:grid;
+  align-content:center;
+  background:linear-gradient(135deg,#fff8e9,#ffffff);
+  border:2px solid rgba(255,224,138,.98);
+  overflow:hidden;
+}
+
+.result-box span{
+  display:block;
+  color:#405873;
+  font-size:21px;
+  line-height:1.05;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+}
+
+.result-box strong{
+  display:block;
+  margin-top:12px;
+  color:var(--navy);
+  font-size:43px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.04em;
+  white-space:normal;
+  word-break:break-word;
+}
+
+.calc-note{
+  margin:14px 0 0;
+  padding:13px 15px;
+  border-radius:18px;
+  background:rgba(11,143,90,.09);
+  color:#087048;
+  font-size:14px;
+  line-height:1.16;
+  font-weight:900;
+}
+
+/* RESPONSIVO */
+@media(max-width:1366px){
+  .content{
+    grid-template-columns:minmax(0,1fr) 500px;
+    gap:18px;
+  }
+
+  .finance-hero,
+  .calculator-card{
+    width:500px;
+  }
+
+  .hero-text{
+    font-size:18px;
+  }
+
+  .info-card{
+    width:390px;
+    min-height:205px;
+  }
+
+  .info-card .card-body{
+    min-height:205px;
+  }
+
+  .info-card h3{
+    font-size:28px;
+  }
+
+  .info-card p{
+    font-size:17px;
+  }
+
+  .core{
+    width:290px;
+    height:290px;
+  }
+
+  .core strong{
+    font-size:39px;
+  }
+
+  .core small{
+    font-size:18px;
+  }
+
+  .orbit-1{
+    width:560px;
+    height:390px;
+  }
+
+  .orbit-2{
+    width:760px;
+    height:320px;
+  }
+
+  .calc-header h3{
+    font-size:34px;
+  }
+
+  .field label{
+    font-size:13px;
+  }
+
+  .field input{
+    font-size:25px;
+    height:46px;
+  }
+
+  .result-box{
+    min-height:126px;
+  }
+
+  .result-box span{
+    font-size:18px;
+  }
+
+  .result-box strong{
+    font-size:36px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="topbar-logo">Jovem Produtivo MT</div>
+    <div class="emblem">SECITEC - MT</div>
+  </div>
+
+  <main class="slide" aria-label="Jovem Produtivo MT">
+    <div class="content">
+
+      <section class="left-panel">
+
+        <header class="hero">
+          <div class="eyebrow">Programa Jovem Aprendiz</div>
+
+          <h1>Jovem Produtivo MT</h1>
+
+          <p class="hero-title">
+            Qualificação Profissional em Parceria com Empresas Mato-grossenses
+          </p>
+
+          <p class="hero-text">
+            Formação de jovens estudantes da rede pública com integração entre escola, tecnologia e prática profissional.
+          </p>
+        </header>
+
+        <section class="main-infographic">
+
+          <div class="info-center">
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+
+            <div class="core">
+              <div>
+                <span>Programa</span>
+                <strong>Jovem<br>Produtivo<br>MT</strong>
+                <small>formação + permanência + inserção produtiva</small>
+              </div>
+            </div>
+          </div>
+
+          <article class="info-card info-a">
+            <span class="connector"></span>
+            <div class="card-body">
+              <div class="num">01</div>
+              <h3>Modelo de Funcionamento</h3>
+              <p>
+                Curso organizado em módulos semestrais, com duração máxima de 2 anos.
+              </p>
+              <strong>15 a 24 anos</strong>
+            </div>
+          </article>
+
+          <article class="info-card info-b">
+            <span class="connector"></span>
+            <div class="card-body">
+              <div class="num">02</div>
+              <h3>Bolsa PEQ</h3>
+              <p>
+                Incentivo vinculado à participação nas atividades formativas e ao apoio à permanência estudantil.
+              </p>
+              <strong>R$ 810,50/mês</strong>
+            </div>
+          </article>
+
+          <article class="info-card info-c">
+            <span class="connector"></span>
+            <div class="card-body">
+              <div class="num">03</div>
+              <h3>Mediação Tecnológica</h3>
+              <p>
+                Aulas híbridas, trilhas digitais e recursos educacionais para ampliar o alcance da formação.
+              </p>
+              <strong>Tecnologia como ponte</strong>
+            </div>
+          </article>
+
+          <article class="info-card info-d">
+            <span class="connector"></span>
+            <div class="card-body">
+              <div class="num">04</div>
+              <h3>Empresa Parceira</h3>
+              <p>
+                Vivência prática supervisionada, conectada ao ambiente real de trabalho.
+              </p>
+              <strong>Aprendizagem aplicada</strong>
+            </div>
+          </article>
+
+        </section>
+
+      </section>
+
+      <aside class="right-panel">
+
+        <section class="finance-hero">
+          <div class="finance-top">
+            <div class="badge">R$</div>
+
+            <div>
+              <h2>Referência Financeira</h2>
+              <p>
+                Estimativa para permanência do estudante durante o processo formativo.
+              </p>
+            </div>
+          </div>
+
+          <div class="finance-grid">
+            <div class="finance-metric">
+              <span>Base de cálculo</span>
+              <strong>½ salário<br>mínimo</strong>
+            </div>
+
+            <div class="finance-metric">
+              <span>Bolsa mensal</span>
+              <strong>R$ 810,50</strong>
+            </div>
+
+            <div class="finance-total">
+              <span>Valor anual por estudante</span>
+              <strong>R$ 9.726,00</strong>
+              <em>Total em 2 anos: R$ 19.452,00</em>
+            </div>
+          </div>
+        </section>
+
+        <section class="calculator-card" aria-label="Valor estimado">
+          <div class="calc-header">
+            <div class="calc-icon">R$</div>
+            <div>
+              <h3>Valor Estimado</h3>
+            </div>
+          </div>
+
+          <div class="calc-grid">
+            <div class="field">
+              <label for="monthlyValue">Bolsa mensal</label>
+              <input id="monthlyValue" type="number" min="0" step="0.01" value="810.50">
+            </div>
+
+            <div class="field">
+              <label for="students">Estudantes</label>
+              <input id="students" type="number" min="1" step="1" value="1">
+            </div>
+
+            <div class="field">
+              <label for="months">Meses</label>
+              <input id="months" type="number" min="1" step="1" value="12">
+            </div>
+          </div>
+
+          <div class="calc-results">
+            <div class="result-box">
+              <span>Total estimado em meses</span>
+              <strong id="periodTotal">R$ 9.726,00</strong>
+            </div>
+          </div>
+
+          <p class="calc-note">
+            O cálculo considera: bolsa mensal × quantidade de estudantes × meses informados.
+          </p>
+        </section>
+
+      </aside>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+function formatCurrencyBR(value){
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+function formatCompactValueBR(value){
+  if (value >= 1000000) {
+    const millions = value / 1000000;
+    const label = millions >= 2 ? "milhões" : "milhão";
+
+    return "R$ " + millions.toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }) + " " + label;
+  }
+
+  return formatCurrencyBR(value);
+}
+
+function getNumber(id, fallback){
+  const element = document.getElementById(id);
+  const value = Number(element.value);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function updateCalculator(){
+  const monthlyValue = getNumber("monthlyValue", 810.50);
+  const students = getNumber("students", 1);
+  const months = getNumber("months", 12);
+
+  const periodTotal = monthlyValue * students * months;
+
+  const periodElement = document.getElementById("periodTotal");
+  periodElement.textContent = formatCompactValueBR(periodTotal);
+  periodElement.title = formatCurrencyBR(periodTotal);
+}
+
+document.querySelectorAll("#monthlyValue, #students, #months").forEach(function(input){
+  input.addEventListener("input", updateCalculator);
+});
+
+updateCalculator();
+</script>
+
+</body>
+</html>

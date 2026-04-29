@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide 22 - Continuidade | Valores Corrigidos</title>
+<style>
+:root{
+  --bg:#edf4fb;--navy:#0b1d3b;--navy2:#102d59;--blue:#1e5fad;--blue2:#2f80d6;--green:#0b8f5a;--green2:#12a06b;--gold:#f4a51c;--cyan:#0ea5b7;
+  --paper:rgba(255,255,255,.96);--line:#d5e3f2;--text:#132642;--muted:#52657f;--shadow:0 18px 42px rgba(13,31,60,.11);--soft:0 12px 30px rgba(13,31,60,.08)
+}
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg);color:var(--text);font-family:"Segoe UI",Inter,Arial,sans-serif}
+.wrap{width:100%;height:100%;display:flex;flex-direction:column;background:var(--bg);overflow:hidden}
+.topbar{height:66px;flex:0 0 66px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 76px;background:linear-gradient(135deg,#0d1f3c 0%,#15315b 58%,#1e5fad 100%);color:#fff;box-shadow:0 8px 24px rgba(13,31,60,.24)}
+.topbar-logo{display:flex;align-items:center;gap:13px;margin-left:48px;font-size:15px;font-weight:760;letter-spacing:.03em}
+.mark{width:18px;height:18px;position:relative;color:#4ade80}.mark::before,.mark::after{content:"";position:absolute;width:13px;height:8px;border-radius:13px 13px 0 13px;background:currentColor}.mark::before{left:0;top:7px;transform:rotate(35deg)}.mark::after{right:0;top:2px;background:#22d3ee;transform:rotate(-35deg)}
+.topbar-right{display:flex;align-items:center;gap:18px;color:rgba(255,255,255,.84);font-size:13px;font-weight:700;letter-spacing:.12em}.emblem{display:grid;place-items:center;min-width:132px;height:34px;padding:0 14px;border:1px solid rgba(255,255,255,.22);border-radius:8px;color:#fff;font-size:12px;font-weight:760;letter-spacing:.08em}
+.slide{position:relative;flex:1;min-height:0;padding:24px 66px 22px;overflow:hidden;background:radial-gradient(circle at 8% 10%,rgba(30,95,173,.10) 0 245px,transparent 246px),radial-gradient(circle at 91% 14%,rgba(14,165,183,.12) 0 275px,transparent 276px),radial-gradient(circle at 78% 90%,rgba(11,143,90,.10) 0 230px,transparent 231px),linear-gradient(180deg,#f8fbff 0%,#edf4fb 100%)}
+.slide::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(30,95,173,.14) 1.2px,transparent 1.2px);background-size:28px 28px;mask-image:linear-gradient(110deg,transparent 0 60%,#000 78%,transparent 100%);opacity:.28}
+.content{position:relative;z-index:1;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) 62px;gap:14px}
+.header{display:grid;grid-template-columns:minmax(0,1fr) 520px;gap:34px;align-items:start}.eyebrow{display:inline-flex;align-items:center;width:fit-content;padding:8px 18px;border-radius:999px;border:1px solid rgba(30,95,173,.26);background:rgba(234,243,255,.88);color:var(--blue);font-size:15px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 10px 24px rgba(30,95,173,.07)}
+.eyebrow::before,.eyebrow::after{display:none!important;content:none!important}h1{margin:11px 0 7px;max-width:1060px;color:var(--navy);font-size:50px;line-height:1.01;font-weight:850;letter-spacing:-.035em}.subtitle{margin:0;max-width:1010px;color:var(--muted);font-size:23px;line-height:1.25;font-weight:500}.title-divider{width:120px;height:6px;margin:8px 0 12px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.summary{padding:19px 21px;border-radius:28px;background:linear-gradient(145deg,#071936 0%,#113d78 58%,#1d63b8 100%);color:#fff;box-shadow:0 24px 54px rgba(11,29,59,.24);border:1px solid rgba(255,255,255,.12)}.summary-title{display:flex;align-items:center;gap:12px;margin:0 0 14px;color:#fff;font-size:27px;line-height:1.08;font-weight:850;letter-spacing:-.02em}.summary-title::before{content:"💰";width:44px;height:44px;display:grid;place-items:center;border-radius:16px;background:rgba(255,255,255,.12);font-size:23px;border:1px solid rgba(255,255,255,.16)}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.summary-box{padding:15px 16px;border-radius:20px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}.summary-box span{display:block;margin-bottom:7px;color:rgba(255,255,255,.72);font-size:13px;font-weight:850;letter-spacing:.10em;text-transform:uppercase}.summary-box strong{display:block;color:#ffe28a;font-size:25px;line-height:1;font-weight:950;letter-spacing:-.025em}
+.main-grid{min-height:0;display:grid;grid-template-columns:1.07fr 1.23fr .9fr;grid-template-rows:minmax(0,1fr);gap:16px}.card{min-height:0;padding:20px 22px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,var(--paper),rgba(255,255,255,.88));box-shadow:var(--soft);overflow:hidden;position:relative}.card::before{content:"";position:absolute;inset:0;border-radius:28px;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.82)}.card h2{display:flex;align-items:center;gap:12px;margin:0 0 16px;color:var(--navy);font-size:26px;line-height:1.08;font-weight:850;letter-spacing:-.025em;position:relative;z-index:1}.ico{width:45px;height:45px;flex:0 0 auto;display:grid;place-items:center;border-radius:16px;color:#fff;font-size:22px;font-weight:900;box-shadow:0 12px 24px rgba(13,31,60,.16)}
+.breakdown .ico{background:linear-gradient(135deg,var(--blue),var(--blue2))}.annual .ico{background:linear-gradient(135deg,#0f766e,var(--green))}.economy .ico{background:linear-gradient(135deg,var(--gold),#ffbd36)}
+.breakdown-list{position:relative;z-index:1;display:grid;gap:11px}.break-item{display:grid;grid-template-columns:58px 1fr auto;gap:13px;align-items:center;padding:13px 14px;border-radius:20px;background:#f7fbff;border:1px solid rgba(30,95,173,.16)}.break-item.green{background:#f3fbf7;border-color:rgba(11,143,90,.18)}.break-item.gold{background:#fff8eb;border-color:rgba(244,165,28,.25)}.badge{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;background:rgba(30,95,173,.10);color:var(--blue);font-size:25px;font-weight:900;border:1px solid rgba(30,95,173,.12)}.green .badge{background:rgba(11,143,90,.11);color:var(--green)}.gold .badge{background:rgba(244,165,28,.15);color:#af6a00}.break-item strong{display:block;color:var(--navy);font-size:19px;line-height:1.08;font-weight:850}.break-item small{display:block;margin-top:4px;color:#40556f;font-size:15.5px;line-height:1.16;font-weight:600}.break-value{min-width:178px;text-align:right;color:#0b1d3b;font-size:23px;font-weight:950;letter-spacing:-.03em}
+.annual{background:linear-gradient(145deg,#ffffff,#f4fbf8)}.annual-stack{position:relative;z-index:1;display:grid;gap:14px}.hero-total{padding:21px;border-radius:25px;background:linear-gradient(135deg,#0b8f5a,#0ea5b7);color:#fff;box-shadow:0 16px 34px rgba(11,143,90,.18)}.hero-total span{display:block;margin-bottom:9px;color:rgba(255,255,255,.82);font-size:14px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.hero-total strong{display:block;font-size:42px;line-height:1;font-weight:950;letter-spacing:-.04em}.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini{padding:17px 16px;border-radius:22px;background:#fff;border:1px solid rgba(11,143,90,.20);box-shadow:0 12px 26px rgba(13,31,60,.06)}.mini span{display:block;margin-bottom:7px;color:#496078;font-size:13px;font-weight:850;letter-spacing:.09em;text-transform:uppercase}.mini strong{display:block;color:#0b1d3b;font-size:26px;line-height:1;font-weight:950;letter-spacing:-.03em}.note{padding:15px 17px;border-radius:20px;background:linear-gradient(135deg,rgba(244,165,28,.16),rgba(11,143,90,.10));border:1px solid rgba(244,165,28,.28);color:#183252;font-size:17px;line-height:1.22;font-weight:700}
+.economy-list{position:relative;z-index:1;display:grid;gap:12px}.eco-item{padding:14px 16px;border-radius:19px;background:#f7fbff;border:1px solid rgba(30,95,173,.16)}.eco-item.save{background:linear-gradient(135deg,#fff8e9,#ffffff);border-color:rgba(244,165,28,.36)}.eco-item span{display:block;margin-bottom:5px;color:#52657f;font-size:13px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.eco-item strong{display:block;color:#0b1d3b;font-size:23px;line-height:1;font-weight:950;letter-spacing:-.025em}.eco-item.save strong{color:#9a5c08}.percent{margin-top:12px;padding:17px;border-radius:22px;background:linear-gradient(135deg,#0b1d3b,#1e5fad);color:#fff}.percent span{display:block;color:rgba(255,255,255,.78);font-size:13px;font-weight:850;letter-spacing:.10em;text-transform:uppercase}.percent strong{display:block;margin-top:6px;color:#ffe28a;font-size:34px;line-height:1;font-weight:950}
+.message{display:grid;grid-template-columns:50px 1fr;align-items:center;gap:16px;padding:10px 24px;border-radius:25px;background:linear-gradient(90deg,#071936 0%,#123f7b 54%,#2872c8 100%);color:#fff;box-shadow:0 16px 38px rgba(7,25,54,.20);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.10)}.message::after{content:"";position:absolute;right:-40px;top:-80px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08)}.message-mark{width:50px;height:50px;display:grid;place-items:center;border-radius:50%;background:rgba(244,165,28,.16);border:1px solid rgba(255,209,102,.62);color:#ffd37a;font-size:26px;font-weight:950;z-index:1}.message p{margin:0;font-size:21px;line-height:1.12;font-weight:700;z-index:1;letter-spacing:-.015em}.message strong{color:#ffe08a;font-weight:950}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="topbar-logo"><span class="mark" aria-hidden="true"></span> Jovem Produtivo MT</div>
+    <div class="topbar-right"><span class="emblem">MATO GROSSO</span><span>22 / 22</span></div>
+  </div>
+
+  <main class="slide" aria-label="Continuidade do Slide 21 - Enquadramento dos valores corrigidos">
+    <div class="content">
+      <header class="header">
+        <div>
+          <div class="eyebrow">Continuidade dos valores corrigidos</div>
+          <h1>Enquadramento Orçamentário da Equipe</h1>
+          <div class="title-divider"></div>
+          <p class="subtitle">Síntese objetiva da composição mensal, do impacto anual e da redução em relação ao valor anterior.</p>
+        </div>
+
+        <aside class="summary">
+          <div class="summary-title">Resumo Corrigido</div>
+          <div class="summary-grid">
+            <div class="summary-box"><span>Total mensal</span><strong>R$ 142.781,20</strong></div>
+            <div class="summary-box"><span>Total anual</span><strong>R$ 1.713.374,40</strong></div>
+          </div>
+        </aside>
+      </header>
+
+      <section class="main-grid">
+        <article class="card breakdown">
+          <h2><span class="ico">🧮</span>Composição Mensal</h2>
+          <div class="breakdown-list">
+            <div class="break-item">
+              <div class="badge">34</div>
+              <div><strong>Professores nas 17 ETECs</strong><small>34 × R$ 1.100,00</small></div>
+              <div class="break-value">R$ 37.400,00</div>
+            </div>
+            <div class="break-item green">
+              <div class="badge">17</div>
+              <div><strong>Pedagogos nas 17 ETECs</strong><small>17 × R$ 5.269,06</small></div>
+              <div class="break-value">R$ 89.574,02</div>
+            </div>
+            <div class="break-item gold">
+              <div class="badge">3</div>
+              <div><strong>Equipe SEDE</strong><small>3 técnicos/pedagogos × R$ 5.269,06</small></div>
+              <div class="break-value">R$ 15.807,18</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card annual">
+          <h2><span class="ico">✅</span>Impacto Consolidado</h2>
+          <div class="annual-stack">
+            <div class="hero-total"><span>Valor total anual — 12 meses</span><strong>R$ 1.713.374,40</strong></div>
+            <div class="mini-row">
+              <div class="mini"><span>Mensal corrigido</span><strong>R$ 142.781,20</strong></div>
+              <div class="mini"><span>Mensal anterior</span><strong>R$ 267.677,82</strong></div>
+            </div>
+            <div class="note">A correção reorganiza o custo da equipe e mantém a cobertura das 17 ETECs com professores, pedagogos e apoio técnico/pedagógico da sede.</div>
+          </div>
+        </article>
+
+        <article class="card economy">
+          <h2><span class="ico">↘</span>Redução Gerada</h2>
+          <div class="economy-list">
+            <div class="eco-item save"><span>Redução mensal</span><strong>R$ 124.896,62</strong></div>
+            <div class="eco-item save"><span>Redução anual</span><strong>R$ 1.498.759,44</strong></div>
+            <div class="percent"><span>Economia mensal aproximada</span><strong>46,66%</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="message">
+        <div class="message-mark">!</div>
+        <p><strong>Continuidade do Slide 21:</strong> a equipe corrigida totaliza R$ 142.781,20/mês e gera redução anual de R$ 1.498.759,44.</p>
+      </footer>
+    </div>
+  </main>
+</div>
+</body>
+</html>
